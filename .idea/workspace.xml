@@ -4,7 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99e20084-6b3c-4d4b-8efe-5abe6db7e940" name="Changes" comment="" />
+    <list default="true" id="99e20084-6b3c-4d4b-8efe-5abe6db7e940" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/(auth)/login/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(auth)/register/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(protected)/dashboard/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/auth/[...alll]/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Landing/Bento.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Landing/Header.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Landing/Hero.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Landing/dashboard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/auth/Register-form.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/auth/input-component/input-field.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/auth/input-component/input-mail.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/auth/input-component/password-indicator.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/auth/login-form.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/cult/gradientheading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/cult/logoCarousel.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/glowing-effect.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/magic/confettis.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/reactbits/TextPressure.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/spectrum/alert.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/v0/budget-animation.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/auth.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/authClient.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/prisma.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,6 +89,7 @@
       <updated>1739095913249</updated>
       <workItem from="1739095914314" duration="964000" />
       <workItem from="1739097208848" duration="18000" />
+      <workItem from="1739144321858" duration="7607000" />
     </task>
     <servers />
   </component>
