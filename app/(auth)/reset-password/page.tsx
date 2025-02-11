@@ -1,8 +1,6 @@
 "use client"
 import ResetPasswordForm from "@/src/components/auth/reset-password-form";
 import {motion} from "framer-motion";
-import Image from "next/image";
-import LetterGlitch from "@/src/components/reactbits/LetterGlitch/LetterGlitch";
 import ResetPasswordAnimation from "@/src/components/v0/reset-password-animation";
 
 export default function ResetPage(){

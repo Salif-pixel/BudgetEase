@@ -1,5 +1,5 @@
 import {prisma} from "@/src/lib/prisma";
-import PageAccessManagement from "@/app/(protected)/settings/roles/AccessManagement";
+
 
 // users
 export const get_user = async (id: string | "") => {

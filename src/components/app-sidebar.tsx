@@ -1,11 +1,6 @@
 "use client"
 import * as React from "react"
-import {
-  Frame,
-  Map,
-  PieChart,
-  Send,
-} from "lucide-react"
+
 import { NavMain } from "@/src/components/nav-main"
 import { NavUser } from "@/src/components/nav-user"
 import {

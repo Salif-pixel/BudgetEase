@@ -4,7 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99e20084-6b3c-4d4b-8efe-5abe6db7e940" name="Changes" comment="" />
+    <list default="true" id="99e20084-6b3c-4d4b-8efe-5abe6db7e940" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/reset-password/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/reset-password/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/session-wrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/session-wrapper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/auth/[...alll]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/auth/[...all]/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eslint.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/eslint.config.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/account.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/account.action.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/dashboard.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Landing/Bento.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing/Bento.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app-sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app-sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/Register-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/Register-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/login-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/login-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/reset-password-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/reset-password-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/magicui/confetti.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/magicui/confetti.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nav-main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav-main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/reactbits/Ballpit/Ballpit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/reactbits/Ballpit/Ballpit.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/use-toast.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/use-toast.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/data.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,7 +88,7 @@
       <workItem from="1739261718172" duration="6427000" />
       <workItem from="1739268156153" duration="14308000" />
       <workItem from="1739296759824" duration="1575000" />
-      <workItem from="1739298340889" duration="16482000" />
+      <workItem from="1739298340889" duration="18707000" />
     </task>
     <servers />
   </component>

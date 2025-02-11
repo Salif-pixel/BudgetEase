@@ -43,16 +43,16 @@ export default function RegisterForm() {
     const onSubmit = async (values: RegisterFormType) => {
         setIsPending(true);
         const { email, password, username } = values;
-        const { data, error } = await authClient.signUp.email({
+        await authClient.signUp.email({
             email: email,
             password: password,
             name: username,
             callbackURL: "/login",
         },{
-            onRequest: (ctx) => {
+            onRequest: () => {
                 showToast("Inscription en cours...", "Veuillez patienter pendant que nous créons votre compte.", "info");
             },
-            onSuccess: (ctx) => {
+            onSuccess: () => {
                 form.reset()
                 showToast("Inscription réussie! 🎉", "Vous êtes maintenant inscrit à BudgetEase.","celebration");
                 handleClick();

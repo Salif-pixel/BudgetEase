@@ -81,7 +81,7 @@ export default async function SessionWrapper({ children }: { children: React.Rea
 
         return <>{children}</>;
     } catch (error) {
-        console.error("Erreur dans SessionWrapper:", error);
+
         redirect("/login");
     }
 }

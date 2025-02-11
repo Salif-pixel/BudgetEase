@@ -10,7 +10,6 @@ import { z } from "zod";
 import { useCustomToast } from "@/src/components/spectrum/alert";
 import { authClient } from "@/src/lib/authClient";
 import Link from "next/link";
-import bcrypt from "bcryptjs";
 import {redirect} from "next/navigation";
 
 // Define the schema for validation (use zod here)
@@ -40,14 +39,14 @@ export default function ResetPasswordForm() {
         const { newPassword } = values;
 
         // Simulate an API call to reset the password
-        const { data, error } = await authClient.resetPassword({
+          await authClient.resetPassword({
             newPassword: newPassword,
             token: token, // Replace with the actual token from the URL or context
         }, {
-            onRequest: (ctx) => {
+            onRequest: () => {
                 showToast("Réinitialisation en cours...", "Veuillez patienter pendant que nous mettons à jour votre mot de passe.", "info");
             },
-            onSuccess: (ctx) => {
+            onSuccess: () => {
                 form.reset();
                 showToast("Réinitialisation réussie! 🎉", "Votre mot de passe a été mis à jour avec succès.", "celebration");
                 redirect("/login");

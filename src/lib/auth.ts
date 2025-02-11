@@ -20,7 +20,7 @@ export const auth = betterAuth({
                 return await bcrypt.compare(password, hash);
             }
         },
-        sendResetPassword: async ({user, url, token}, request) => {
+        sendResetPassword: async ({user, url}) => {
             await resend.emails.send({
                 from: 'onboarding@resend.dev',
                 to: user.email,

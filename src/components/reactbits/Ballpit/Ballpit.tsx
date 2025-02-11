@@ -240,13 +240,13 @@ class X {
 
   #onIntersection(entries: IntersectionObserverEntry[]) {
     this.#isAnimating = entries[0].isIntersecting;
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+
     this.#isAnimating ? this.#startAnimation() : this.#stopAnimation();
   }
 
   #onVisibilityChange() {
     if (this.#isAnimating) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+
       document.hidden ? this.#stopAnimation() : this.#startAnimation();
     }
   }
@@ -855,7 +855,7 @@ function createBallpit(
       return spheres;
     },
     setCount(count: number) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+
       // @ts-expect-error
       initialize({...spheres.config, count});
     },

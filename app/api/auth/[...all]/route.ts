@@ -102,4 +102,4 @@ export const { GET } = betterAuthHandlers;
 
 
 
-export default toNextJsHandler(auth.handler)
+

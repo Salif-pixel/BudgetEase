@@ -1,6 +1,6 @@
 "use client";
 
-import {Box, EyeIcon, Lock, Search, Settings, Sparkles, UsersIcon} from "lucide-react";
+import {EyeIcon, Lock, Sparkles, UsersIcon} from "lucide-react";
 import { GlowingEffect } from "@/src/components/ui/glowing-effect";
 
 export function Bento() {

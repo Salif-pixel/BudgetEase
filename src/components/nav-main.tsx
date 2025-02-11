@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronRight, type LucideIcon } from "lucide-react"
+import { ChevronRight } from "lucide-react"
 import { useState } from "react" // Importez useState pour gérer l'état actif
 
 import {

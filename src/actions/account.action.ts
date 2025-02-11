@@ -5,7 +5,7 @@ import {prisma} from "@/src/lib/prisma";
 import {revalidatePath} from "next/cache";
 import bcrypt from "bcryptjs";
 import {Account, User} from "@prisma/client";
-import {Resend} from "resend";
+
 
 export  const updateImageAccount = async (id: string,  image: string , background: string ) => {
     try {

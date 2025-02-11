@@ -62,15 +62,15 @@ export default function LoginForm() {
     const onSubmit = async (values: LoginFormType) => {
         setIsPending(true);
         const { email, password} = values;
-        const { data, error } = await authClient.signIn.email({
+        await authClient.signIn.email({
             email: email,
             password: password,
             callbackURL: "/settings/account",
         },{
-            onRequest: (ctx) => {
+            onRequest: () => {
                 showToast( "Connexion en cours...",  "Veuillez patienter pendant que nous vous connectons à votre compte.","info");
             },
-            onSuccess: (ctx) => {
+            onSuccess: () => {
                 form.reset()
                 showToast( "Connexion réussie! 🎉",  "Vous êtes maintenant connecté à votre compte.","celebration");
             },
@@ -173,14 +173,14 @@ export default function LoginForm() {
                                 </a>
                             </p>
                             <Link onClick={async()=> {
-                                const { data, error } = await authClient.forgetPassword({
+                                await authClient.forgetPassword({
                                     email: form.getValues("email"),
                                     redirectTo: "/reset-password",
                                 },{
-                                    onRequest: (ctx) => {
+                                    onRequest: () => {
                                         showToast( "Vérification en cours...",  "Veuillez patienter pendant que nous vérifions votre adresse email.","info");
                                     },
-                                    onSuccess: (ctx) => {
+                                    onSuccess: () => {
                                         showToast( "Email envoyé! 🎉",  "Un email de réinitialisation de mot de passe vous a été envoyé.","celebration");
                                     },
                                     onError: (ctx) => {
