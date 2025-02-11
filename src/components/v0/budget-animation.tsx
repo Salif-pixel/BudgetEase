@@ -23,7 +23,7 @@ const BudgetAnimation = () => {
 
         const interval = setInterval(updatePercentages, 5000)
         return () => clearInterval(interval)
-    }, [setPercentages]) // Added setPercentages to dependencies
+    }, [percentages, setPercentages]) // Added setPercentages to dependencies
 
     useEffect(() => {
         controls.start({

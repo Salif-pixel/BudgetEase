@@ -34,8 +34,13 @@ export const auth = betterAuth({
         github: {
             clientId: process.env.GITHUB_CLIENT_ID as string,
             clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
-            redirectUri: "http://localhost:3000/api/auth/callback/github",
+            redirectUri: process.env.GITHUB_REDIRECT_URI as string,
         },
+        google: {
+            clientId: process.env.GOOGLE_CLIENT_ID as string,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+            redirectUri: process.env.GOOGLE_REDIRECT_URI as string,
+        }
     },
     cookieOptions: {
         secure: process.env.NODE_ENV === "production", // HTTPS en production

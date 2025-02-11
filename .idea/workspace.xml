@@ -5,73 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99e20084-6b3c-4d4b-8efe-5abe6db7e940" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/(auth)/auth-wrapper.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(auth)/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(auth)/reset-password/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(protected)/dashboard/departments/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(protected)/loading.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(protected)/needs/new/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(protected)/needs/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(protected)/needs/priorities/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(protected)/session-wrapper.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(protected)/settings/account/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(protected)/settings/account/profileComponent.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(protected)/settings/categories/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(protected)/settings/roles/AccessManagement.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(protected)/settings/roles/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(protected)/settings/users/UserForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(protected)/settings/users/UsersComponent.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(protected)/settings/users/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(protected)/settings/users/usersDatatable.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(protected)/userAppSidebard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/api/edgestore/[...edgestore]/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/not-found.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prisma/seed.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/account.action.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/roles.action.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/users.action.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/account/PersonalInfo.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/account/changePasswordForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/auth/reset-password-form.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/csv/export-csv.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/spectrum/alert.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/v0/reset-password-animation.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/data.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/edgestore.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/resend.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/login/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/register/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/register/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(protected)/dashboard/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(protected)/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/dashboard/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/auth/[...alll]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/auth/[...alll]/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Landing/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Landing/Hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing/Hero.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app-sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app-sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/Register-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/Register-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/input-component/input-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input-component/input-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/input-component/input-mail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input-component/input-mail.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/input-component/password-indicator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input-component/password-indicator.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/auth/login-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/login-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/nav-main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav-main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/nav-user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav-user.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/cult/gradientheading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cult/gradientheading.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/cult/logoCarousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cult/logoCarousel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/magic/confettis.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/magic/confettis.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/reactbits/Ballpit/Ballpit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/reactbits/Ballpit/Ballpit.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/reactbits/TextPressure.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/reactbits/TextPressure.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/spectrum/alert.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/v0/budget-animation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/v0/budget-animation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/cult/logoCarousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cult/logoCarousel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/v0/budget-animation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/v0/budget-animation.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/authClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/authClient.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +73,7 @@
       <workItem from="1739261718172" duration="6427000" />
       <workItem from="1739268156153" duration="14308000" />
       <workItem from="1739296759824" duration="1575000" />
-      <workItem from="1739298340889" duration="14148000" />
+      <workItem from="1739298340889" duration="16156000" />
     </task>
     <servers />
   </component>

@@ -38,6 +38,16 @@ export default function LoginForm() {
         await new Promise((resolve) => setTimeout(resolve, 2000));
         showToast( "Connexion réussie! 🎉",  "Vous êtes maintenant connecté à votre compte.","celebration");
     }
+    const signInGoogle = async () => {
+        showToast( "Connexion en cours...",  "Veuillez patienter pendant que nous vous connectons à votre compte.","info");
+
+        await authClient.signIn.social({
+            provider: "google",
+            callbackURL: "/settings/account",
+        })
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        showToast( "Connexion réussie! 🎉",  "Vous êtes maintenant connecté à votre compte.","celebration");
+    }
     const [isPending, setIsPending] = useState(false);
     const { showToast } = useCustomToast();
     const form = useForm({
@@ -137,7 +147,7 @@ export default function LoginForm() {
                         </motion.form>
 
                         <div className="flex flex-col gap-2">
-                            <Button className="bg-[#DB4437] text-white after:flex-1 hover:bg-[#DB4437]/90">
+                            <Button onClick={()=>{signInGoogle()}} className="bg-[#DB4437] text-white after:flex-1 hover:bg-[#DB4437]/90">
                                 <span className="pointer-events-none me-2 flex-1">
                                     <RiGoogleFill className="opacity-60" size={16} aria-hidden="true" />
                                 </span>

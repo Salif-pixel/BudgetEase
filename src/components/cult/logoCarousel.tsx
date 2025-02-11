@@ -155,7 +155,7 @@ function LogoCarousel({ columnCount = 2 }: { columnCount?: number }) {
     useEffect(() => {
         const distributedLogos = distributeLogos(allLogos, columnCount)
         setLogoSets(distributedLogos)
-    }, [allLogos])
+    }, [allLogos, columnCount])
 
     // Function to update the current time (used for logo cycling)
     const updateTime = useCallback(() => {
