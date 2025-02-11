@@ -15,16 +15,24 @@ import {
 import {auth} from "@/src/lib/auth";
 import {headers} from "next/headers";
 import {redirect} from "next/navigation";
+import {checkPageAccess} from "@/app/(protected)/session-wrapper";
+
 
 export default async function Page() {
+
   const session = await auth.api.getSession(
       {headers : await headers()}
   );
   if (!session) {
     return redirect("/login");
   }
+  
   const user = session?.user;
 
+  const hasAccess = await checkPageAccess(user.id,  "/dashboard");
+  if (!hasAccess) {
+    return redirect("/not-found");
+  }
   return (
       <SidebarInset >
         <header className="flex h-16 shrink-0 items-center gap-2 ">
@@ -35,12 +43,12 @@ export default async function Page() {
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
                   <BreadcrumbLink href="#">
-                    Building Your Application {user?.email} {user?.name}
+                    dashboard
                   </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                  <BreadcrumbPage>suivi des dépenses</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>

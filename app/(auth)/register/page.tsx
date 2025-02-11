@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 
 
 import RegisterForm from "@/src/components/auth/Register-form";
-import BudgetAnimation from "@/src/components/ui/v0/budget-animation";
+import BudgetAnimation from "@/src/components/v0/budget-animation";
 
 export default function Page() {
 

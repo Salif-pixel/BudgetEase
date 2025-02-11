@@ -1,14 +1,10 @@
 "use client"
 import * as React from "react"
 import {
-  BookOpen,
   Frame,
-  LifeBuoy,
   Map,
   PieChart,
   Send,
-  Settings2,
-  SquareTerminal,
 } from "lucide-react"
 import { NavMain } from "@/src/components/nav-main"
 import { NavUser } from "@/src/components/nav-user"
@@ -21,108 +17,22 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/src/components/ui/sidebar"
-import {GradientHeading} from "@/src/components/ui/cult/gradientheading";
-const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
-  navMain: [
-    {
-      title: "Dashboard",
-      url: "#",
-      icon: SquareTerminal,
-      isActive: true,
-      items: [
-        {
-          title: "Suivi des dépenses",
-          url: "#",
-        },
-        {
-          title: "Départements",
-          url: "#",
-        },
+import {User} from "@prisma/client";
+type NavItem = {
+  title: string;
+  url: string;
+  icon: string;
+  isActive?: boolean;
+  items?: NavItem[];
+};
 
-      ],
-    },
+type AppSidebarProps = {
+  data: NavItem[];
+  user: User;
+} & React.ComponentProps<typeof Sidebar>;
 
-    {
-      title: "Besoins",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Faire une demande",
-          url: "#",
-        },
-        {
-          title: "Gestion des Besoins",
-          url: "#",
-        },
-        {
-          title: "Liste des priorités",
-          url: "#",
-        },
+export default function AppSidebar({ data, user, ...props }: AppSidebarProps) {
 
-      ],
-    },
-    {
-      title: "Paramètres",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "Gestion des utilisateurs",
-          url: "#",
-        },
-        {
-          title: "Gestion des catégories",
-          url: "#",
-        },
-        {
-          title: "Gestion des roles",
-          url: "#",
-        },
-        {
-          title: "Profil",
-          url: "#",
-        },
-
-      ],
-    },
-  ],
-  navSecondary: [
-    {
-      title: "Support",
-      url: "#",
-      icon: LifeBuoy,
-    },
-    {
-      title: "Feedback",
-      url: "#",
-      icon: Send,
-    },
-  ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
-  ],
-}
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
       <Sidebar  variant="inset" {...props}>
         <SidebarHeader>
@@ -142,10 +52,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenu>
         </SidebarHeader>
         <SidebarContent>
-          <NavMain items={data.navMain} />
+          <NavMain items={data} />
         </SidebarContent>
         <SidebarFooter>
-          <NavUser user={data.user} />
+          <NavUser user={user} />
         </SidebarFooter>
       </Sidebar>
   )

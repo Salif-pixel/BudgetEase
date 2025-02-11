@@ -3,17 +3,16 @@ import {Lock, User2Icon} from "lucide-react";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CustomFormMail } from "@/src/components/auth/input-component/input-mail";
-import { CustomFormPassword } from "@/src/components/auth/input-component/password-indicator";
+import { CustomFormMail } from "@/src/components/input-component/input-mail";
+import { CustomFormPassword } from "@/src/components/input-component/password-indicator";
 import { Button } from "@/src/components/ui/button";
 import { Loader2 } from "lucide-react";
-import { useCustomToast } from "@/src/components/ui/spectrum/alert";
-import { CustomFormInput } from "@/src/components/auth/input-component/input-field";
+import { useCustomToast } from "@/src/components/spectrum/alert";
+import { CustomFormInput } from "@/src/components/input-component/input-field";
 
 import { z } from "zod";
-import {handleClick} from "@/src/components/ui/magic/confettis";
+import {handleClick} from "@/src/components/magic/confettis";
 import {authClient} from "@/src/lib/authClient";
-import {toast} from "@/src/hooks/use-toast";
 const registerSchema = z.object({
     email: z.string().email("L'adresse email n'est pas valide").nonempty("Veuillez entrer une adresse email"),
     password: z.string().min(8, "Le mot de passe doit contenir au moins 8 caractères").nonempty("Veuillez entrer un mot de passe"),
@@ -51,19 +50,18 @@ export default function RegisterForm() {
             callbackURL: "/login",
         },{
             onRequest: (ctx) => {
-                toast({
-                    title: "Inscription en cours...",
-                })
+                showToast("Inscription en cours...", "Veuillez patienter pendant que nous créons votre compte.", "info");
             },
             onSuccess: (ctx) => {
                 form.reset()
-                showToast("Inscription réussie! 🎉", "Vous êtes maintenant inscrit à BudgetEase.");
+                showToast("Inscription réussie! 🎉", "Vous êtes maintenant inscrit à BudgetEase.","celebration");
                 handleClick();
             },
             onError: (ctx) => {
-                toast({
-                    title: "Erreur lors de l'inscription",
-                    description: ctx.error.message,
+                showToast("Erreur lors de l'inscription", ctx.error.message, "error");
+                form.setError("email", {
+                    type: "manual",
+                    message: ctx.error.message,
                 })
             },
         });

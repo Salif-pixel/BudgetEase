@@ -4,17 +4,17 @@ import { Lock } from "lucide-react";
 import { useState } from "react";
 import {FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CustomFormMail } from "@/src/components/auth/input-component/input-mail";
-import {CustomFormPassword} from "@/src/components/auth/input-component/password-indicator";
+import { CustomFormMail } from "@/src/components/input-component/input-mail";
+import {CustomFormPassword} from "@/src/components/input-component/password-indicator";
 import { Button } from "@/src/components/ui/button"; // Assumed import for your button component
 import { Loader2 } from "lucide-react";
 import { z } from "zod";
-
-import { useCustomToast } from "@/src/components/ui/spectrum/alert";
+import {RiGoogleFill, RiGithubFill } from "@remixicon/react"
+import { useCustomToast } from "@/src/components/spectrum/alert";
 import * as React from "react";
- import {authClient} from "@/src/lib/authClient";
- import {toast} from "@/src/hooks/use-toast";
- import {handleClick} from "@/src/components/ui/magic/confettis";
+import {authClient} from "@/src/lib/authClient";
+import Link from "next/link";
+
 
 
 // Define the schema for validation (use zod here)
@@ -28,6 +28,16 @@ export type LoginFormType = {
 };
 
 export default function LoginForm() {
+    const signInGithub = async () => {
+        showToast( "Connexion en cours...",  "Veuillez patienter pendant que nous vous connectons à votre compte.","info");
+
+        await authClient.signIn.social({
+            provider: "github",
+            callbackURL: "/settings/account",
+        })
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        showToast( "Connexion réussie! 🎉",  "Vous êtes maintenant connecté à votre compte.","celebration");
+    }
     const [isPending, setIsPending] = useState(false);
     const { showToast } = useCustomToast();
     const form = useForm({
@@ -45,23 +55,22 @@ export default function LoginForm() {
         const { data, error } = await authClient.signIn.email({
             email: email,
             password: password,
-            callbackURL: "/dashboard",
+            callbackURL: "/settings/account",
         },{
             onRequest: (ctx) => {
-                toast({
-                    title: "Connexion en cours...",
-                })
+                showToast( "Connexion en cours...",  "Veuillez patienter pendant que nous vous connectons à votre compte.","info");
             },
             onSuccess: (ctx) => {
                 form.reset()
-                showToast( "Connexion réussie! 🎉",  "Vous êtes maintenant connecté à votre compte." );
-                handleClick();
+                showToast( "Connexion réussie! 🎉",  "Vous êtes maintenant connecté à votre compte.","celebration");
             },
             onError: (ctx) => {
-                toast({
-                    title: "Erreur lors de la connexion",
-                    description: ctx.error.message,
-                })
+                if(ctx.error.message === "Invalid email or password"){
+                    showToast( "Erreur lors de la connexion",  "Vos identifiants sont incorrects. Veuillez réessayer.","error");
+                }else {
+                    showToast( "Erreur lors de la connexion",  ctx.error.message,"error");
+                }
+
             },
         });
         setIsPending(false);
@@ -126,25 +135,54 @@ export default function LoginForm() {
                                 )}
                             </div>
                         </motion.form>
+
+                        <div className="flex flex-col gap-2">
+                            <Button className="bg-[#DB4437] text-white after:flex-1 hover:bg-[#DB4437]/90">
+                                <span className="pointer-events-none me-2 flex-1">
+                                    <RiGoogleFill className="opacity-60" size={16} aria-hidden="true" />
+                                </span>
+                                Se connecter avec Google
+                            </Button>
+                            <Button onClick={()=>{signInGithub()}} className="bg-[#14171a] text-white after:flex-1 hover:bg-[#14171a]/90">
+                                <span className="pointer-events-none me-2 flex-1">
+                                  <RiGithubFill className="opacity-60" size={16} aria-hidden="true" />
+                                </span>
+                                Se connecter avec Github
+                            </Button>
+                        </div>
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.6, delay: 0.7 }}
+                            className="text-center "
+                        >
+                            <p className="text-sm text-gray-600">
+                                Vous n&apos;avez pas encore de compte ?{" "}
+                                <a href="/register" className="text-primary/70 hover:text-primary">
+                                    Inscrivez-vous
+                                </a>
+                            </p>
+                            <Link onClick={async()=> {
+                                const { data, error } = await authClient.forgetPassword({
+                                    email: form.getValues("email"),
+                                    redirectTo: "/reset-password",
+                                },{
+                                    onRequest: (ctx) => {
+                                        showToast( "Vérification en cours...",  "Veuillez patienter pendant que nous vérifions votre adresse email.","info");
+                                    },
+                                    onSuccess: (ctx) => {
+                                        showToast( "Email envoyé! 🎉",  "Un email de réinitialisation de mot de passe vous a été envoyé.","celebration");
+                                    },
+                                    onError: (ctx) => {
+                                        showToast( "Erreur lors de la vérification",  ctx.error.message,"error");
+                                    },
+                                });
+
+                            }}  href="#" className="text-sm text-primary/70 hover:text-primary">
+                                Mot de passe oublié ?
+                            </Link>
+                        </motion.div>
                     </FormProvider>
-
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.7 }}
-                    className="text-center "
-                >
-                    <p className="text-sm text-gray-600">
-                        Vous n&apos;avez pas encore de compte ?{" "}
-                        <a href="/register" className="text-primary/70 hover:text-primary">
-                            Inscrivez-vous
-                        </a>
-                    </p>
-                    <a href="#" className="text-sm text-primary/70 hover:text-primary">
-                        Mot de passe oublié ?
-                    </a>
-                </motion.div>
-
             </div>
 
         </motion.div>

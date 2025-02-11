@@ -9,6 +9,7 @@ type CustomFormInputProps<T extends FieldValues> = {
     label?: string;
     placeholder?: string;
     icon?: ReactNode;
+    disabled?: boolean,
 };
 
 export function CustomFormInput<T extends FieldValues>({
@@ -17,6 +18,7 @@ export function CustomFormInput<T extends FieldValues>({
                                                            label,
                                                            placeholder,
                                                            icon,
+                                                           disabled,
                                                        }: CustomFormInputProps<T>) {
     return (
         <FormField
@@ -40,6 +42,7 @@ export function CustomFormInput<T extends FieldValues>({
                                     id={name}
                                     className={`${icon ? "pl-10" : ""} rounded-lg shadow-none focus-visible:z-10`} // Ajoute un padding si une icône est présente
                                     placeholder={placeholder}
+                                    disabled={disabled}
                                     type="text"
                                     value={field.value || ""} // Assure que la valeur n'est jamais undefined
                                     onChange={(e) => field.onChange(e.target.value)}

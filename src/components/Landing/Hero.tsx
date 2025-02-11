@@ -3,8 +3,8 @@
 import React from "react"
 
 
-import { LogoCarousel } from "@/src/components/ui/cult/logoCarousel"
-import {GradientHeading} from "@/src/components/ui/cult/gradientheading";
+import { LogoCarousel } from "@/src/components/cult/logoCarousel"
+import {GradientHeading} from "@/src/components/cult/gradientheading";
 
 
 export function Hero() {

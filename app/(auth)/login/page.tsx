@@ -1,11 +1,14 @@
 "use client"
 import { motion } from "framer-motion"
 
+
 import Image from "next/image"
-import Ballpit from "@/src/components/ui/reactbits/Ballpit/Ballpit";
+import Ballpit from "@/src/components/reactbits/Ballpit/Ballpit";
 import LoginForm from "@/src/components/auth/login-form";
 
+
 export default function Page() {
+
 
 
     return (

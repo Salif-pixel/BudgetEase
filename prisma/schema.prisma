@@ -13,12 +13,31 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  PERSONAL
+  DEPARTMENT_HEAD
+  DIRECTOR
+  ADMIN
+}
+
+enum Department {
+  INFORMATIQUE
+  CIVIL
+  ELECTRICITE
+  MECANIQUE
+  GESTION
+  NO
+}
+
 model User {
-  id            String    @id
-  email         String    @unique
+  id            String      @id
+  email         String      @unique
   name          String?
   emailVerified Boolean
+  role          Role?       @default(PERSONAL)
+  department    Department? @default(NO)
   image         String?
+  background    String?
   createdAt     DateTime
   updatedAt     DateTime
   sessions      Session[]
@@ -70,4 +89,26 @@ model Verification {
   updatedAt  DateTime?
 
   @@map("verification")
+}
+
+/// Modèle représentant une page ou un module de l'application
+model Page {
+  id             String       @id @default(uuid())
+  name           String       @unique // une clé logique, ex: "dashboard", "users", "reports"
+  label          String? // Libellé affiché, ex: "Tableau de bord"
+  route          String? // La route de la page, ex: "/dashboard"
+  accessControls PageAccess[]
+
+  // Tu peux ajouter d'autres champs (description, icône, etc.)
+}
+
+/// Modèle qui associe une page et un rôle pour définir si l'accès est autorisé
+model PageAccess {
+  id      String  @id @default(uuid())
+  page    Page    @relation(fields: [pageId], references: [id])
+  pageId  String
+  role    Role // Réutilisation de l'enum Role
+  allowed Boolean @default(false)
+
+  @@unique([pageId, role])
 }
