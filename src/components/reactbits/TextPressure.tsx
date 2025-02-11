@@ -83,6 +83,7 @@ const TextPressure: React.FC<TextPressureProps> = ({
         };
     }, []);
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const setSize = () => {
         if (!containerRef.current || !titleRef.current) return;
 
