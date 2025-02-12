@@ -26,6 +26,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+    <head>
+      <meta property="og:title" content="Budgetease" />
+      <meta property="og:description" content="Découvrez notre plateforme de budgetisation" />
+      <meta property="og:image" content="/dashboard.png" />
+      <meta property="og:url" content="/dashboard.png" />
+      <meta property="og:type" content="website" />
+    </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans  antialiased `}
       >
