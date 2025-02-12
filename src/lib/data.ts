@@ -25,6 +25,32 @@ export const get_users = async () => {
     return users;
 };
 
-// roles
+// data
+export async function getCategories() {
+    try {
+        const categories = await prisma.category.findMany({
+            orderBy: {
+                name: 'asc'
+            }
+        });
+        return { success: true, data: categories };
+    } catch (error) {
+        console.error('Error fetching categories:', error);
+        return { success: false, error: '' +
+                'erreur lors de la recherche des catégories' };
+    }
+}
+
+export async function getCategoryById(id: string) {
+    try {
+        const category = await prisma.category.findUnique({
+            where: { id }
+        });
+        return { success: true, data: category };
+    } catch (error) {
+        console.error('Error fetching category:', error);
+        return { success: false, error: 'Erreur lors de la recherche de cette catégorie' };
+    }
+}
 
 

@@ -11,7 +11,7 @@ import {auth} from "@/src/lib/auth";
 import {headers} from "next/headers";
 import {redirect} from "next/navigation";
 import {checkPageAccess} from "@/app/(protected)/session-wrapper";
-import CategoriesComponent from "@/app/(protected)/settings/categories/CategoriesComponent";
+import CategoriesComponent from "@/app/(protected)/settings/categories/Component/CategoriesComponent";
 import {Suspense} from "react";
 import LoaderComponent from "@/src/components/LoaderComponent";
 

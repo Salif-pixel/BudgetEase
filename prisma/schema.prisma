@@ -29,6 +29,77 @@ enum Department {
   NO
 }
 
+// Statut de la demande
+enum RequestStatus {
+  DRAFT // Brouillon
+  SUBMITTED // Soumis au chef de département
+  VALIDATED // Validé par le chef de département
+  APPROVED // Approuvé par le directeur
+  REJECTED // Rejeté
+}
+
+// Catégories de besoins
+model Category {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  isActive    Boolean  @default(true)
+  needs       Need[] // Relation avec les besoins
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("categories")
+}
+
+// Modèle de demande
+model Request {
+  id          String        @id @default(cuid())
+  title       String
+  description String?
+  status      RequestStatus @default(DRAFT)
+
+  // Relations
+  userId     String // Créateur de la demande
+  user       User   @relation(fields: [userId], references: [id])
+  department String // Département (copié depuis l'utilisateur pour faciliter les requêtes)
+
+  // Suivi des validations
+  validatedAt DateTime? // Date de validation par le chef de département
+  validatedBy String? // ID du chef qui a validé
+  approvedAt  DateTime? // Date d'approbation par le directeur
+  approvedBy  String? // ID du directeur qui a approuvé
+
+  // Liste des besoins
+  needs Need[]
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("requests")
+}
+
+// Modèle des besoins
+model Need {
+  id             String   @id @default(cuid())
+  title          String
+  description    String?
+  categoryId     String
+  category       Category @relation(fields: [categoryId], references: [id])
+  quantity       Int      @default(1)
+  estimated_cost Float?
+
+  // Relation avec la demande
+  requestId String
+  request   Request @relation(fields: [requestId], references: [id], onDelete: Cascade)
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("needs")
+}
+
 model User {
   id            String      @id
   email         String      @unique
@@ -42,6 +113,7 @@ model User {
   updatedAt     DateTime
   sessions      Session[]
   accounts      Account[]
+  Request       Request[]
 
   @@map("user")
 }

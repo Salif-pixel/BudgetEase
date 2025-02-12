@@ -5,21 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99e20084-6b3c-4d4b-8efe-5abe6db7e940" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/(protected)/settings/categories/Component/Categories-Crud.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(protected)/settings/categories/Component/CategoriesComponent.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(protected)/settings/categories/Component/add-category-button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(protected)/settings/categories/Component/category-card.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(protected)/settings/categories/Component/category-form.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/actions/categories.action.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/login/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/register/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/register/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/reset-password/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/reset-password/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(protected)/dashboard/DashboardComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/dashboard/DashboardComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(protected)/dashboard/departments/DepartmentsComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/dashboard/departments/DepartmentsComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(protected)/needs/NeedsComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/needs/NeedsComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(protected)/needs/new/NewComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/needs/new/NewComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(protected)/needs/priorities/PrioritiesComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/needs/priorities/PrioritiesComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(protected)/settings/account/AccountComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/settings/account/AccountComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(protected)/settings/account/profileComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/settings/account/profileComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(protected)/settings/categories/CategoriesComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/settings/categories/CategoriesComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(protected)/userAppSidebard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/userAppSidebard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/edgestore/[...edgestore]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/edgestore/[...edgestore]/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/settings/categories/CategoriesComponent.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/settings/categories/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/settings/categories/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/data.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,11 +54,11 @@
       <recent name="$PROJECT_DIR$/public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/(protected)/settings/categories/Component" />
       <recent name="$PROJECT_DIR$/src/assets" />
       <recent name="$PROJECT_DIR$/src/components/reactbits" />
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/app/(protected)" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -88,7 +84,8 @@
       <workItem from="1739268156153" duration="14308000" />
       <workItem from="1739296759824" duration="1575000" />
       <workItem from="1739298340889" duration="22423000" />
-      <workItem from="1739357726967" duration="6792000" />
+      <workItem from="1739357726967" duration="9255000" />
+      <workItem from="1739369296060" duration="6425000" />
     </task>
     <servers />
   </component>
