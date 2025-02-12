@@ -4,12 +4,15 @@ import {checkPageAccess} from "@/app/(protected)/session-wrapper";
 import {redirect} from "next/navigation";
 
 export default async function NeedsComponent(){
+    const headersValue = await headers();
+
+    const sessionPromise = auth.api.getSession({ headers: headersValue });
+
     const [session, hasAccess] = await Promise.all([
-        headers(),
-        auth.api.getSession({ headers: await headers() }),
-        auth.api.getSession({ headers: await headers() }).then(session =>
+        sessionPromise,
+        sessionPromise.then((session) =>
             session ? checkPageAccess(session.user.id, "/needs") : false
-        )
+        ),
     ]);
 
     if (!session) {

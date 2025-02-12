@@ -22,7 +22,7 @@ export default function Page() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
-                className="lg:flex-1 bg-primary  overflow-hidden relative max-h-screen flex items-center justify-center p-8 lg:p-16"
+                className="lg:flex-1 bg-primary  hidden  overflow-hidden relative max-h-screen md:flex items-center justify-center p-8 lg:p-16"
             >
                 <div className="relative w-full max-w-lg aspect-square rounded-2xl overflow-hidden shadow-2xl">
                     <Image

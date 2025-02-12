@@ -32,6 +32,7 @@ export default async function AccountComponent() {
         return redirect("/login");
     }
 
+
     if (!hasAccess) {
         return redirect("/not-found");
     }

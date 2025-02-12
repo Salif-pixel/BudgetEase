@@ -64,13 +64,18 @@ const NotFound = () => {
         animateBubbles()
 
         const sequence = async () => {
-            await controls.start({ opacity: 1, y: 0, transition: { duration: 2 } })
-            controls.start({
-                y: [0, -20, 0],
-                transition: { duration: 5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" },
-            })
-        }
-        sequence()
+            try {
+                await controls.start({ opacity: 1, y: 0, transition: { duration: 2 } });
+                await controls.start({
+                    y: [0, -20, 0],
+                    transition: { duration: 5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" },
+                });
+            } catch  {
+
+            }
+        };
+
+        sequence();
     }, [controls, windowSize])
 
     return (

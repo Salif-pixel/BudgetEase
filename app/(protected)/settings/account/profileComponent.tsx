@@ -27,6 +27,9 @@ export default function ProfileComponent({user}: {user: User & { accounts: Accou
 
             const res = await edgestore.publicFiles.upload({
                 file,
+                options: {
+                    replaceTargetUrl: user.image || "",
+                },
             });
             setAvatarSrc(res.url)
             await updateImageAccount(user.id, res.url, backgroundSrc)
@@ -36,9 +39,11 @@ export default function ProfileComponent({user}: {user: User & { accounts: Accou
     const handleFileBackgroundChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0]
         if (file) {
-
             const res = await edgestore.publicFiles.upload({
                 file,
+                options: {
+                    replaceTargetUrl: user.background || "",
+                },
             });
             setBackgroundSrc(res.url)
             await updateImageAccount(user.id, avatarSrc, res.url)

@@ -115,7 +115,6 @@ export default async function UserAppSidebar() {
         .map(access => access.page.route)
         .filter((route): route is string => !!route);
 
-    console.log("Routes autorisées :", allowedRoutes);
     function filterNav(navItems: any[], allowedRoutes: string[]): any[] {
         return navItems.reduce((acc: any[], item) => {
             let filteredSubItems: any[] | undefined;
