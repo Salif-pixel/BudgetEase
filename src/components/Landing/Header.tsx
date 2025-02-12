@@ -8,11 +8,11 @@ import Link from "next/link";
 import {cn} from "@/src/lib/utils";
 export default function Header() {
     return (
-        <div className={"h-fit bg-primary border-[20px] border-background  rounded-[40]"}>
+        <div className={"h-fit bg-primary border-[20px] border-background  rounded-[40px]"}>
             <div className={"w-full flex flex-col sm:flex-row gap-4 p-4 justify-between"}>
                 <Button className={"bg-background text-foreground hover:bg-background rounded-full hover:text-foreground "}>
                     <div className={"flex flex-row w-full"}>
-                        <div className="grid flex-1 text-left text-center text-sm leading-tight">
+                        <div className="grid flex-1  text-center text-sm leading-tight">
                             <span className="truncate font-semibold">💰BudgetEase</span>
                         </div>
                     </div>
