@@ -14,21 +14,10 @@ import {auth} from "@/src/lib/auth";
 import {headers} from "next/headers";
 import {redirect} from "next/navigation";
 import {checkPageAccess} from "@/app/(protected)/session-wrapper";
+import LoaderComponent from "@/src/components/LoaderComponent";
 
-export default async function UsersPage() {
-    const session = await auth.api.getSession(
-        {headers : await headers()}
-    );
-    if (!session) {
-        return redirect("/login");
-    }
+export default function UsersPage() {
 
-    const user = session?.user;
-
-    const hasAccess = await checkPageAccess(user.id,  "/settings/users");
-    if (!hasAccess) {
-        return redirect("/not-found");
-    }
     return (
         <SidebarInset >
             <header className="flex h-16 shrink-0 items-center gap-2 ">
@@ -38,7 +27,7 @@ export default async function UsersPage() {
                     <Breadcrumb>
                         <BreadcrumbList>
                             <BreadcrumbItem className="hidden md:block">
-                                <BreadcrumbLink href="#">
+                                <BreadcrumbLink href="/settings/account">
                                     paramètre
                                 </BreadcrumbLink>
                             </BreadcrumbItem>
@@ -51,9 +40,7 @@ export default async function UsersPage() {
                 </div>
             </header>
             <div className={"w-full h-full flex flex-col gap-4"}>
-                <Suspense fallback={<div className={`flex flex-col items-center justify-center h-screen`}>
-                    <div className={`animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary`}></div>
-                </div>}>
+                <Suspense fallback={<LoaderComponent/>}>
                     <UsersComponent/>
                 </Suspense>
             </div>

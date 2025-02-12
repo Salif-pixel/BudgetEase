@@ -4,7 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99e20084-6b3c-4d4b-8efe-5abe6db7e940" name="Changes" comment="" />
+    <list default="true" id="99e20084-6b3c-4d4b-8efe-5abe6db7e940" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/(protected)/dashboard/DashboardComponent.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(protected)/dashboard/departments/DepartmentsComponent.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(protected)/needs/NeedsComponent.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(protected)/needs/new/NewComponent.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(protected)/needs/priorities/PrioritiesComponent.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(protected)/settings/account/AccountComponent.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(protected)/settings/categories/CategoriesComponent.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(protected)/settings/roles/RolesComponent.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LoaderComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/dashboard/departments/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/dashboard/departments/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/dashboard/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/loading.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/needs/new/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/needs/new/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/needs/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/needs/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/needs/priorities/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/needs/priorities/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/settings/account/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/settings/account/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/settings/categories/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/settings/categories/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/settings/roles/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/settings/roles/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/settings/users/UsersComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/settings/users/UsersComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/settings/users/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/settings/users/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Landing/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nav-main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav-main.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,22 +46,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/moussabiaye/Desktop/web_development/Budget/budget-app/public",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "ts.external.directory.path": "/Users/moussabiaye/Desktop/web_development/Budget/budget-app/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/moussabiaye/Desktop/web_development/Budget/budget-app/public&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/moussabiaye/Desktop/web_development/Budget/budget-app/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public" />
@@ -71,7 +96,8 @@
       <workItem from="1739261718172" duration="6427000" />
       <workItem from="1739268156153" duration="14308000" />
       <workItem from="1739296759824" duration="1575000" />
-      <workItem from="1739298340889" duration="20498000" />
+      <workItem from="1739298340889" duration="22423000" />
+      <workItem from="1739357726967" duration="4268000" />
     </task>
     <servers />
   </component>

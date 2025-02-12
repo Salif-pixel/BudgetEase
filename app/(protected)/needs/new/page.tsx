@@ -7,25 +7,11 @@ import {
     BreadcrumbList, BreadcrumbPage,
     BreadcrumbSeparator
 } from "@/src/components/ui/breadcrumb";
-import {auth} from "@/src/lib/auth";
-import {headers} from "next/headers";
-import {redirect} from "next/navigation";
-import {checkPageAccess} from "@/app/(protected)/session-wrapper";
+import NewComponent from "@/app/(protected)/needs/new/NewComponent";
+import {Suspense} from "react";
+import LoaderComponent from "@/src/components/LoaderComponent";
 
-export default async function Page (){
-    const session = await auth.api.getSession(
-        {headers : await headers()}
-    );
-    if (!session) {
-        return redirect("/login");
-    }
-
-    const user = session?.user;
-
-    const hasAccess = await checkPageAccess(user.id,  "/needs/new");
-    if (!hasAccess) {
-        return redirect("/not-found");
-    }
+export default  function Page (){
     return (
         <SidebarInset >
             <header className="flex h-16 shrink-0 items-center gap-2 ">
@@ -35,7 +21,7 @@ export default async function Page (){
                     <Breadcrumb>
                         <BreadcrumbList>
                             <BreadcrumbItem className="hidden md:block">
-                                <BreadcrumbLink href="#">
+                                <BreadcrumbLink href="/needs">
                                     besoins
                                 </BreadcrumbLink>
                             </BreadcrumbItem>
@@ -47,9 +33,9 @@ export default async function Page (){
                     </Breadcrumb>
                 </div>
             </header>
-            <div>
-                <h1>Demandes</h1>
-            </div>
+            <Suspense fallback={<LoaderComponent/>}>
+                <NewComponent/>
+            </Suspense>
         </SidebarInset>
     )
 }

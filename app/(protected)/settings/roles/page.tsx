@@ -13,40 +13,12 @@ import {auth} from "@/src/lib/auth";
 import {headers} from "next/headers";
 import {redirect} from "next/navigation";
 import {checkPageAccess} from "@/app/(protected)/session-wrapper";
+import {Suspense} from "react";
+import RolesComponent from "@/app/(protected)/settings/roles/RolesComponent";
+import LoaderComponent from "@/src/components/LoaderComponent";
 
-export default async function RolePage (){
-    const pages = await prisma.page.findMany();
-    const pageAccess = await prisma.pageAccess.findMany();
-    if(!pages || !pageAccess){
-        return
-    }
-    type Page = {
-        id: string;
-        name: string;
-        label: string; // doit être une string, pas string | null
-        route: string; // idem
-    };
+export default  function RolePage (){
 
-    const newPages: Page[] = pages.map((item): Page => ({
-        id: item.id,
-        name: item.name,
-        label: item.label ?? "", // Si item.label est null, on retourne ""
-        route: item.route ?? "", // Idem pour route
-    }));
-
-    const session = await auth.api.getSession(
-        {headers : await headers()}
-    );
-    if (!session) {
-        return redirect("/login");
-    }
-
-    const user = session?.user;
-
-    const hasAccess = await checkPageAccess(user.id,  "/settings/roles");
-    if (!hasAccess) {
-        return redirect("/not-found");
-    }
     return (
         <SidebarInset >
             <header className="flex h-16 shrink-0 items-center gap-2 ">
@@ -56,7 +28,7 @@ export default async function RolePage (){
                     <Breadcrumb>
                         <BreadcrumbList>
                             <BreadcrumbItem className="hidden md:block">
-                                <BreadcrumbLink href="#">
+                                <BreadcrumbLink href="/settings/account">
                                     paramètres
                                 </BreadcrumbLink>
                             </BreadcrumbItem>
@@ -68,9 +40,9 @@ export default async function RolePage (){
                     </Breadcrumb>
                 </div>
             </header>
-            <div className={"w-full h-full p-8"}>
-               <AccessManagment initialPages={newPages} initialAccess={pageAccess}/>
-            </div>
+            <Suspense fallback={<LoaderComponent/>}>
+                <RolesComponent/>
+            </Suspense>
         </SidebarInset>
     )
 }

@@ -18,7 +18,7 @@ export default function Header() {
                     </div>
                 </Button>
                 <div className={"flex flex-col sm:flex-row sm:justify-end gap-4 "}>
-                    <Link
+                    <Link prefetch={true}
                         href="/login"
                         className={cn(
                             buttonVariants({ size: "lg", variant: "outline" }),
@@ -27,7 +27,7 @@ export default function Header() {
                     >
                         Se connecter
                     </Link>
-                    <Link
+                    <Link prefetch={true}
                         href="/register"
                         className={cn(
                             buttonVariants({ size: "lg", variant: "outline" }),

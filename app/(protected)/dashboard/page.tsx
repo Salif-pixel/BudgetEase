@@ -12,27 +12,14 @@ import {
   SidebarInset,
   SidebarTrigger,
 } from "@/src/components/ui/sidebar"
-import {auth} from "@/src/lib/auth";
-import {headers} from "next/headers";
-import {redirect} from "next/navigation";
-import {checkPageAccess} from "@/app/(protected)/session-wrapper";
+import DashboardComponent from "@/app/(protected)/dashboard/DashboardComponent";
+import {Suspense} from "react";
+import LoaderComponent from "@/src/components/LoaderComponent";
 
 
-export default async function Page() {
+export default function Page() {
 
-  const session = await auth.api.getSession(
-      {headers : await headers()}
-  );
-  if (!session) {
-    return redirect("/login");
-  }
-  
-  const user = session?.user;
 
-  const hasAccess = await checkPageAccess(user.id,  "/dashboard");
-  if (!hasAccess) {
-    return redirect("/not-found");
-  }
   return (
       <SidebarInset >
         <header className="flex h-16 shrink-0 items-center gap-2 ">
@@ -42,7 +29,7 @@ export default async function Page() {
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">
+                  <BreadcrumbLink href="/dashboard">
                     dashboard
                   </BreadcrumbLink>
                 </BreadcrumbItem>
@@ -54,14 +41,9 @@ export default async function Page() {
             </Breadcrumb>
           </div>
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
-          </div>
-          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
-        </div>
+        <Suspense fallback={<LoaderComponent/>}>
+          <DashboardComponent/>
+        </Suspense>
       </SidebarInset>
 
   )

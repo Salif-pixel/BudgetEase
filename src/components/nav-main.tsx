@@ -79,7 +79,7 @@ export function NavMain({
                                       isActive={activeItem === subItem.title} // Définir l'état actif pour les sous-éléments
                                       onClick={() => handleItemClick(subItem.title)} // Gérer le clic
                                   >
-                                    <Link href={subItem.url}>
+                                    <Link prefetch={true} href={subItem.url}>
                                       {subItem.icon}
                                       <span>{subItem.title}</span>
                                     </Link>

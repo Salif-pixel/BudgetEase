@@ -13,23 +13,13 @@ import {redirect} from "next/navigation";
 import {headers} from "next/headers";
 import {get_user} from "@/src/lib/data";
 import {checkPageAccess} from "@/app/(protected)/session-wrapper";
+import AccountComponent from "@/app/(protected)/settings/account/AccountComponent";
+import {Suspense} from "react";
+import LoaderComponent from "@/src/components/LoaderComponent";
 
 
-export default async function ProfilePage() {
-    const  session = await auth.api.getSession(
-        {headers : await headers()}
-    );
-    if (!session) {
-        return redirect("/login");
-    }
-    const user = await  get_user(session?.user.id);
-    if(!user){
-        return redirect("/login");
-    }
-    const hasAccess = await checkPageAccess(user.id,  "/settings/account");
-    if (!hasAccess) {
-        return redirect("/not-found");
-    }
+export default function ProfilePage() {
+
 
     return (
         <SidebarInset >
@@ -40,7 +30,7 @@ export default async function ProfilePage() {
                     <Breadcrumb>
                         <BreadcrumbList>
                             <BreadcrumbItem className="hidden md:block">
-                                <BreadcrumbLink href="#">
+                                <BreadcrumbLink href="/settings/account">
                                     paramètre
                                 </BreadcrumbLink>
                             </BreadcrumbItem>
@@ -52,7 +42,9 @@ export default async function ProfilePage() {
                     </Breadcrumb>
                 </div>
             </header>
-            <ProfileComponent user={user} />
+            <Suspense fallback={<LoaderComponent/>}>
+               <AccountComponent/>
+           </Suspense>
 
         </SidebarInset>
     )

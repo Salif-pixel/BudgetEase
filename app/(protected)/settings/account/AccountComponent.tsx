@@ -7,15 +7,34 @@ import {
     BreadcrumbList, BreadcrumbPage,
     BreadcrumbSeparator
 } from "@/src/components/ui/breadcrumb";
+import ProfileComponent from "@/app/(protected)/settings/account/profileComponent";
 import {auth} from "@/src/lib/auth";
-import {headers} from "next/headers";
 import {redirect} from "next/navigation";
+import {headers} from "next/headers";
+import {get_user} from "@/src/lib/data";
 import {checkPageAccess} from "@/app/(protected)/session-wrapper";
-import DepartmentsComponent from "@/app/(protected)/dashboard/departments/DepartmentsComponent";
-import {Suspense} from "react";
-import LoaderComponent from "@/src/components/LoaderComponent";
 
-export default  function Page (){
+
+export default async function AccountComponent() {
+    const headersValue = await headers();
+
+    const [session, user, hasAccess] = await Promise.all([
+        auth.api.getSession({ headers: headersValue }),
+        auth.api.getSession({ headers: headersValue }).then(session =>
+            session ? get_user(session.user.id) : null
+        ),
+        auth.api.getSession({ headers: headersValue }).then(session =>
+            session ? checkPageAccess(session.user.id, "/settings/account") : false
+        )
+    ]);
+
+    if (!session || !user) {
+        return redirect("/login");
+    }
+
+    if (!hasAccess) {
+        return redirect("/not-found");
+    }
 
     return (
         <SidebarInset >
@@ -26,21 +45,21 @@ export default  function Page (){
                     <Breadcrumb>
                         <BreadcrumbList>
                             <BreadcrumbItem className="hidden md:block">
-                                <BreadcrumbLink href="/dashboard">
-                                    dashboard
+                                <BreadcrumbLink href="#">
+                                    paramètre
                                 </BreadcrumbLink>
                             </BreadcrumbItem>
                             <BreadcrumbSeparator className="hidden md:block" />
                             <BreadcrumbItem>
-                                <BreadcrumbPage>département</BreadcrumbPage>
+                                <BreadcrumbPage>Compte</BreadcrumbPage>
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
                 </div>
             </header>
-            <Suspense fallback={<LoaderComponent/>}>
-               <DepartmentsComponent/>
-           </Suspense>
-            </SidebarInset>
+            <ProfileComponent user={user} />
+
+        </SidebarInset>
     )
 }
+
