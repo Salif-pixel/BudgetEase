@@ -106,7 +106,7 @@ model User {
   name          String?
   emailVerified Boolean
   role          Role?       @default(PERSONAL)
-  department    Department? @default(NO)
+  department    Department? @default(INFORMATIQUE)
   image         String?
   background    String?
   createdAt     DateTime

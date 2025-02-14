@@ -152,7 +152,7 @@ const RequestCard: React.FC<RequestCardProps> = ({ request, onClick, user }) => 
 
     const handleUpdate = async (status: RequestStatus) => {
         showToast("Mise à jour en cours...", "Veuillez patienter pendant que nous mettons à jour la demande.", "info");
-        await updateRequestStatus(request.id, status, request.userId);
+        await updateRequestStatus(request.id, status, user.id);
         showToast("Demande mise à jour avec succès", "La demande a été mise à jour avec succès.", "success");
     };
 
@@ -395,8 +395,11 @@ export const exportToExcel = (data: RequestType[], showToast: ToastFunction) => 
 
         const totalCoutEstime = flattenedData.reduce((acc, row) => {
             const coutEstime = row.cout_estime != null ? row.cout_estime : 0;
-            return acc + coutEstime;
+            const quantite = row.quantite != null ? Number(row.quantite) : 1; // Conversion en number
+            return acc + coutEstime * quantite;
         }, 0);
+
+
 
         const totalRow: ExportRowType = {
             titre_requete: 'TOTAL',
