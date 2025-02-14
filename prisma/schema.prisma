@@ -60,8 +60,8 @@ model Request {
 
   // Relations
   userId     String // Créateur de la demande
-  user       User   @relation(fields: [userId], references: [id])
-  department String // Département (copié depuis l'utilisateur pour faciliter les requêtes)
+  user       User       @relation(fields: [userId], references: [id])
+  department Department // Département (copié depuis l'utilisateur pour faciliter les requêtes)
 
   // Suivi des validations
   validatedAt DateTime? // Date de validation par le chef de département

@@ -27,7 +27,7 @@ export default function UsersPage() {
                     <Breadcrumb>
                         <BreadcrumbList>
                             <BreadcrumbItem className="hidden md:block">
-                                <BreadcrumbLink href="/settings/account">
+                                <BreadcrumbLink>
                                     paramètre
                                 </BreadcrumbLink>
                             </BreadcrumbItem>

@@ -7,7 +7,7 @@ import {
     BreadcrumbList, BreadcrumbPage,
     BreadcrumbSeparator
 } from "@/src/components/ui/breadcrumb";
-import NewComponent from "@/app/(protected)/needs/new/NewComponent";
+import NewComponent from "@/app/(protected)/needs/new/component/NewComponent";
 import {Suspense} from "react";
 import LoaderComponent from "@/src/components/LoaderComponent";
 
@@ -21,7 +21,7 @@ export default  function Page (){
                     <Breadcrumb>
                         <BreadcrumbList>
                             <BreadcrumbItem className="hidden md:block">
-                                <BreadcrumbLink href="/needs">
+                                <BreadcrumbLink>
                                     besoins
                                 </BreadcrumbLink>
                             </BreadcrumbItem>

@@ -26,7 +26,7 @@ export default async function Page (){
                     <Breadcrumb>
                         <BreadcrumbList>
                             <BreadcrumbItem className="hidden md:block">
-                                <BreadcrumbLink href="/settings/account">
+                                <BreadcrumbLink>
                                     paramètres
                                 </BreadcrumbLink>
                             </BreadcrumbItem>

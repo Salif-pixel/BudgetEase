@@ -11,7 +11,7 @@ export default async function UsersComponent() {
     const [session, hasAccess, users] = await Promise.all([
         auth.api.getSession({ headers: headersValue }),
         auth.api.getSession({ headers: headersValue }).then(session =>
-            session ? checkPageAccess(session.user.id, "/settings/categories") : false
+            session ? checkPageAccess(session.user.id, "/settings/users") : false
         ),
         get_users() // Ajout de la récupération des utilisateurs
     ]);

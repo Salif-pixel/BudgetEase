@@ -8,7 +8,7 @@ import { prisma } from "@/src/lib/prisma";
 export   async function checkPageAccess(userId: string, currentPath: string) {
     try {
         // Récupérer l'utilisateur avec son rôle
-        const user = await prisma.user.findUnique({
+        const user = await prisma.user.findFirst({
             where: { id: userId },
             select: { role: true },
         });

@@ -33,6 +33,7 @@ export function NavMain({
       title: string
       url: string
       icon: string
+      isActive?: boolean
     }[]
   }[]
 }) {
@@ -76,7 +77,7 @@ export function NavMain({
                                 <SidebarMenuSubItem key={subItem.title}>
                                   <SidebarMenuSubButton
                                       asChild
-                                      isActive={activeItem === subItem.title} // Définir l'état actif pour les sous-éléments
+                                      isActive={subItem.isActive} // Définir l'état actif pour les sous-éléments
                                       onClick={() => handleItemClick(subItem.title)} // Gérer le clic
                                   >
                                     <Link prefetch={true} href={subItem.url}>

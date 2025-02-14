@@ -30,7 +30,7 @@ export default function ProfilePage() {
                     <Breadcrumb>
                         <BreadcrumbList>
                             <BreadcrumbItem className="hidden md:block">
-                                <BreadcrumbLink href="/settings/account">
+                                <BreadcrumbLink>
                                     paramètre
                                 </BreadcrumbLink>
                             </BreadcrumbItem>

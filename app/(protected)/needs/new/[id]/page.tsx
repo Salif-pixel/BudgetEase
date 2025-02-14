@@ -1,3 +1,4 @@
+
 import {SidebarInset, SidebarTrigger} from "@/src/components/ui/sidebar";
 import {Separator} from "@/src/components/ui/separator";
 import {
@@ -7,18 +8,13 @@ import {
     BreadcrumbList, BreadcrumbPage,
     BreadcrumbSeparator
 } from "@/src/components/ui/breadcrumb";
-import AccessManagment from "@/app/(protected)/settings/roles/AccessManagement";
-import {prisma} from "@/src/lib/prisma";
-import {auth} from "@/src/lib/auth";
-import {headers} from "next/headers";
-import {redirect} from "next/navigation";
-import {checkPageAccess} from "@/app/(protected)/session-wrapper";
 import {Suspense} from "react";
-import RolesComponent from "@/app/(protected)/settings/roles/RolesComponent";
+import RequestComponent from "@/app/(protected)/needs/new/[id]/RequestComponent";
 import LoaderComponent from "@/src/components/LoaderComponent";
 
-export default  function RolePage (){
 
+export  default async function Page({ params }: { params: { id: string } }) {
+    const id = (await params).id;
     return (
         <SidebarInset >
             <header className="flex h-16 shrink-0 items-center gap-2 ">
@@ -28,20 +24,26 @@ export default  function RolePage (){
                     <Breadcrumb>
                         <BreadcrumbList>
                             <BreadcrumbItem className="hidden md:block">
-                                <BreadcrumbLink>
-                                    paramètres
+                                <BreadcrumbLink >
+                                    besoins
                                 </BreadcrumbLink>
                             </BreadcrumbItem>
                             <BreadcrumbSeparator className="hidden md:block" />
                             <BreadcrumbItem>
-                                <BreadcrumbPage>roles</BreadcrumbPage>
+                                <BreadcrumbLink>
+                                    faire une demande
+                                </BreadcrumbLink>
+                            </BreadcrumbItem>
+                            <BreadcrumbSeparator className="hidden md:block" />
+                            <BreadcrumbItem>
+                                <BreadcrumbPage>faire une demande</BreadcrumbPage>
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
                 </div>
             </header>
             <Suspense fallback={<LoaderComponent/>}>
-                <RolesComponent/>
+                <RequestComponent id={id}/>
             </Suspense>
         </SidebarInset>
     )
