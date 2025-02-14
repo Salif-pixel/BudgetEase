@@ -227,7 +227,10 @@ const RequestCard: React.FC<RequestCardProps> = ({ request, onClick, user }) => 
                 </div>
 
                 <div className="flex items-center gap-3">
-                    {(user.role !== "PERSONAL" || request.status === "DRAFT") && (
+                    {(
+                        user.role !== "PERSONAL" || request.status === "DRAFT" ||
+                        (request.status === "APPROVED" && (user.role === "DIRECTOR" || user.role === "ADMIN"))
+                    ) && (
                         <Link
                             href={`/needs/new/${request.id}`}
                             className={buttonVariants({
