@@ -228,7 +228,7 @@ const RequestCard: React.FC<RequestCardProps> = ({ request, onClick, user }) => 
 
                 <div className="flex items-center gap-3">
                     {(
-                        user.role !== "PERSONAL" || request.status === "DRAFT" ||
+                        user.role !== "PERSONAL" && request.status === "DRAFT" ||
                         (request.status === "APPROVED" && (user.role === "DIRECTOR" || user.role === "ADMIN"))
                     ) && (
                         <Link
@@ -243,6 +243,7 @@ const RequestCard: React.FC<RequestCardProps> = ({ request, onClick, user }) => 
                             Ajouter
                         </Link>
                     )}
+
                     {user.role !== "PERSONAL" && (
                         <Avatar className="h-8 w-8 ring-2 ring-background">
                             <AvatarImage src={request.user.image || ""} alt={request.user.name || ""} />
