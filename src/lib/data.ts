@@ -1,4 +1,5 @@
 import {prisma} from "@/src/lib/prisma";
+import {Prisma} from "@prisma/client";
 
 
 // users
@@ -13,16 +14,18 @@ export const get_user = async (id: string | "") => {
     });
     return user;
 }
-export const get_users = async () => {
-    const users = await prisma.user.findMany({
+export const get_users = async (): Promise<
+    Prisma.UserGetPayload<{ include: { accounts: true; Request: true } }>[]
+> => {
+    return await prisma.user.findMany({
         orderBy: {
             createdAt: "asc"
         },
         include: {
             accounts: true,
+            Request: true
         }
     });
-    return users;
 };
 
 // data

@@ -13,7 +13,7 @@ export default async function CategoriesPage() {
     const [session, hasAccess, categoriesResponse] = await Promise.all([
         sessionPromise,
         sessionPromise.then((session) =>
-            session ? checkPageAccess(session.user.id, "/dashboard") : false
+            session ? checkPageAccess(session.user.id, "/settings/categories") : false
         ),
         getCategories(),
     ]);
@@ -34,7 +34,7 @@ export default async function CategoriesPage() {
                 <AddCategoryButton />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full p-16">
+            <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-4 w-full p-8">
                 {data.map((category) => (
                     <CategoryCard key={category.id} category={category} />
                 ))}

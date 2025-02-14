@@ -78,7 +78,7 @@ export default function UserAppSidebarClient({ user, allowedRoutes }: Props) {
             return acc;
         }, []);
     };
-
+    console.log("allowedRoutes", allowedRoutes);
     const filteredNavMain = filterNav(navConfig, allowedRoutes);
 
 

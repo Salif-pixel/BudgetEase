@@ -16,8 +16,8 @@ import DepartmentRequestComponent
 
 type paramsType = Promise<{ department: string }>;
 export  default async function  Page({
-    params,
-}: {
+                                         params,
+                                     }: {
     params: paramsType;
 }) {
     const { department } = await params;

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
 import {
     Table,
     TableBody,
@@ -13,6 +13,7 @@ import { Badge } from "@/src/components/ui/badge";
 import { Input } from "@/src/components/ui/input";
 import { Button } from "@/src/components/ui/button";
 import { Checkbox } from "@/src/components/ui/checkbox";
+import {Request} from "@prisma/client";
 import {
     Dialog,
     DialogContent,
@@ -38,13 +39,14 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/src/components/ui/dropdown-menu";
-import { MoreHorizontal, Trash, Pencil } from "lucide-react";
+import {MoreHorizontal, Trash, Pencil, Download} from "lucide-react";
 import { User } from "@prisma/client";
 import {Avatar, AvatarFallback, AvatarImage} from "@/src/components/ui/avatar";
 import {UserForm, UserFormValues,} from "@/app/(protected)/settings/users/UserForm";
 import {DeleteUsers, UpdateOrCreateuser} from "@/src/actions/users.action";
 import {useCustomToast} from "@/src/components/spectrum/alert";
-import {exportToCSV} from "@/src/components/csv/export-csv";
+import {exportToCSV, exportUsersToExcel} from "@/src/components/csv/export-csv";
+import {exportToExcel} from "@/app/(protected)/needs/new/component/sortableListComponent";
 
 // Définition des enums et leur traduction/coloration
 const ROLES = ["PERSONAL", "DEPARTMENT_HEAD", "DIRECTOR", "ADMIN"];
@@ -75,7 +77,7 @@ const departmentMapping: Record<string, { label: string; color: string }> = {
     NO: { label: "Aucun", color: "gray" },
 };
 
-export default function UsersDatatable({ users }: { users: User[] }) {
+export default function UsersDatatable({ users }: { users: (User & { Request: Request[] })[]}) {
     // Sélection des utilisateurs dans le tableau
     const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
     // États pour les filtres multiples (tableaux de chaînes)
@@ -378,9 +380,12 @@ export default function UsersDatatable({ users }: { users: User[] }) {
                             </AlertDialogContent>
                         </AlertDialog>
                     )}
-                    <Button onClick={() => exportToCSV(users, "utilisateurs.csv")} className="bg-secondary/70 text-muted-foreground hover:bg-secondary">
-                        Exporter en csv
-                    </Button>
+                    <div className="flex gap-3 w-full sm:w-auto">
+                        <Button onClick={()=>{exportUsersToExcel(users)}} variant="outline" className="flex-1 sm:flex-none gap-2">
+                            <Download className="w-4 h-4" />
+                            Exporter
+                        </Button>
+                    </div>
                     <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
                         <DialogTrigger asChild>
                             <Button variant="default">Ajouter un utilisateur</Button>

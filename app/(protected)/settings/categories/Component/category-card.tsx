@@ -1,21 +1,16 @@
 "use client";
 
-import { useState } from "react";
-import { Card } from "@/src/components/ui/card";
-import { Button } from "@/src/components/ui/button";
-import { CategoryForm } from "./category-form";
-import {
-    Dialog,
-    DialogContent,
-    DialogHeader,
-    DialogTitle,
-} from "@/src/components/ui/dialog";
-import { deleteCategory, toggleCategoryStatus } from "@/src/actions/categories.action";
-import { useCustomToast } from "@/src/components/spectrum/alert";
-import { Edit3Icon, Trash, Info } from "lucide-react";
-import { Badge } from "@/src/components/ui/badge";
-import {cn} from "@/src/lib/utils";
 
+import React, { useState } from 'react';
+import { Card } from '@/src/components/ui/card';
+import { Badge } from '@/src/components/ui/badge';
+import { Button } from '@/src/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/src/components/ui/dialog';
+import { Info, Edit3Icon, Trash } from 'lucide-react';
+import { cn } from '@/src/lib/utils';
+import {useCustomToast} from "@/src/components/spectrum/alert";
+import {deleteCategory, toggleCategoryStatus} from "@/src/actions/categories.action";
+import {CategoryForm} from "@/app/(protected)/settings/categories/Component/category-form";
 type Props = {
     category: {
         id: string;
@@ -24,7 +19,6 @@ type Props = {
         isActive: boolean;
     };
 };
-
 export function CategoryCard({ category }: Props) {
     const [isEditing, setIsEditing] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
@@ -84,44 +78,81 @@ export function CategoryCard({ category }: Props) {
     }
 
     return (
-        <Card className={cn("relative p-6 hover:shadow-lg  transition-shadow duration-200 group",category.isActive ? "bg-emerald-100":"bg-red-100")}>
-            <div className="flex flex-col h-full justify-between gap-4">
-                {/* En-tête avec badge de statut */}
-                <div className="flex justify-between items-start">
-                    <div className="space-y-3">
-                        <div className="flex items-center gap-2">
-                            <h3 className={cn("text-lg font-semibold text-muted-foreground",category.isActive ? "text-emerald-800":"text-red-800")}>
+        <Card className={cn(
+            "relative w-full transform transition-all duration-300",
+            "hover:shadow-lg hover:scale-[1.02]",
+            "sm:p-4 p-4",
+            category.isActive ? "bg-emerald-50/80" : "bg-red-50/80"
+        )}>
+            <div className="flex flex-col h-full justify-between gap-6">
+                {/* Header Section */}
+                <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
+                    <div className="space-y-4 flex-1">
+                        <div className="flex flex-wrap items-center gap-2">
+                            <h3 className={cn(
+                                "text-lg font-semibold",
+                                category.isActive ? "text-emerald-800" : "text-red-800"
+                            )}>
                                 {category.name}
                             </h3>
-                            <Badge  className={cn(category.isActive ? "bg-emerald-100 text-emerald-400" : "bg-red-100 text-red-400","gap-2 hover:bg-gray-100 ")}>
-                                {category.isActive ? <span className={"bg-emerald-500 rounded-full h-2 w-2"}></span> : <span></span>}
+                            <Badge className={cn(
+                                "text-sm font-medium transition-colors",
+                                category.isActive
+                                    ? "bg-emerald-100 text-emerald-700 hover:bg-emerald-200"
+                                    : "bg-red-100 text-red-700 hover:bg-red-200"
+                            )}>
+                                <span className={cn(
+                                    "inline-block h-2 w-2 rounded-full mr-2",
+                                    category.isActive ? "bg-emerald-500" : "bg-red-500"
+                                )} />
                                 {category.isActive ? "Actif" : "Inactif"}
                             </Badge>
                         </div>
                         {category.description && (
-                            <div className="flex items-start gap-2 text-muted-foreground">
-                                <Info className={cn("h-4 w-4 mt-1 flex-shrink-0",category.isActive ? "text-emerald-800":"text-red-800")} />
-                                <p className={cn("text-sm leading-relaxed",category.isActive ? "text-emerald-800":"text-red-800")}>{category.description}</p>
+                            <div className="flex items-start gap-3">
+                                <Info className={cn(
+                                    "h-5 w-5 mt-0.5 flex-shrink-0",
+                                    category.isActive ? "text-emerald-600" : "text-red-600"
+                                )} />
+                                <p className={cn(
+                                    "text-sm leading-relaxed",
+                                    category.isActive ? "text-emerald-700" : "text-red-700"
+                                )}>
+                                    {category.description}
+                                </p>
                             </div>
                         )}
                     </div>
                     <Button
                         size="sm"
-                        variant="destructive"
-                        className={cn(category.isActive ? "bg-emerald-800":"bg-red-800")}
+                        variant="ghost"
+                        className={cn(
+                            "rounded-full p-2 h-auto hover:scale-110 transition-transform",
+                            category.isActive
+                                ? "bg-emerald-100 hover:bg-emerald-200 text-emerald-700"
+                                : "bg-red-100 hover:bg-red-200 text-red-700"
+                        )}
                         onClick={() => setIsEditing(true)}
                     >
-                        <Edit3Icon className={cn("h-4 w-4",category.isActive ? "text-emerald-200":"text-red-200")} />
+                        <Edit3Icon className="h-4 w-4" />
                     </Button>
                 </div>
 
-                {/* Actions */}
-                <div className={cn("flex justify-end gap-2 border-t pt-4",category.isActive ? "border-t-emerald-200 ":"border-t-red-200")}>
+                {/* Actions Section */}
+                <div className={cn(
+                    "flex flex-col sm:flex-row gap-3 border-t pt-4",
+                    category.isActive ? "border-emerald-200" : "border-red-200"
+                )}>
                     <Button
                         variant="outline"
                         size="sm"
                         onClick={handleToggleStatus}
-                        className={cn("flex-1 hover:bg-background",category.isActive ? "text-red-800 ":"text-emerald-800")}
+                        className={cn(
+                            "flex-1 transition-colors",
+                            category.isActive
+                                ? "text-red-700 hover:bg-red-50"
+                                : "text-emerald-700 hover:bg-emerald-50"
+                        )}
                     >
                         {category.isActive ? "Désactiver" : "Activer"}
                     </Button>
@@ -130,9 +161,10 @@ export function CategoryCard({ category }: Props) {
                         size="sm"
                         onClick={() => setIsDeleteDialogOpen(true)}
                         disabled={isDeleting}
+                        className="sm:w-auto w-full"
                     >
-                        <Trash className="h-4 w-4 " />
-
+                        <Trash className="h-4 w-4 mr-2" />
+                        Supprimer
                     </Button>
                 </div>
             </div>
@@ -141,7 +173,9 @@ export function CategoryCard({ category }: Props) {
             <Dialog open={isEditing} onOpenChange={setIsEditing}>
                 <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>
-                        <DialogTitle className="text-xl">Modifier la catégorie</DialogTitle>
+                        <DialogTitle className="text-xl font-semibold">
+                            Modifier la catégorie
+                        </DialogTitle>
                     </DialogHeader>
                     <CategoryForm
                         category={category}
@@ -153,23 +187,24 @@ export function CategoryCard({ category }: Props) {
             <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
                 <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>
-                        <DialogTitle className="text-xl flex items-center gap-2">
-                            <Trash className="h-6 w-6 text-destructive" />
+                        <DialogTitle className="text-xl font-semibold flex items-center gap-2">
+                            <Trash className="h-6 w-6 text-red-600" />
                             Confirmation requise
                         </DialogTitle>
                     </DialogHeader>
                     <div className="space-y-4">
-                        <p className="text-muted-foreground">
+                        <p className="text-gray-600">
                             Êtes-vous sûr de vouloir supprimer définitivement la catégorie{" "}
-                            <span className="font-semibold text-foreground">
+                            <span className="font-semibold text-gray-900">
                                 {category.name}
                             </span>
                             ? Cette action est irréversible.
                         </p>
-                        <div className="flex justify-end gap-3 mt-6">
+                        <div className="flex flex-col-reverse sm:flex-row justify-end gap-3 mt-6">
                             <Button
-                                variant="secondary"
+                                variant="outline"
                                 onClick={() => setIsDeleteDialogOpen(false)}
+                                className="sm:w-auto w-full"
                             >
                                 Annuler
                             </Button>
@@ -177,8 +212,9 @@ export function CategoryCard({ category }: Props) {
                                 variant="destructive"
                                 onClick={handleDeleteConfirmed}
                                 disabled={isDeleting}
+                                className="sm:w-auto w-full"
                             >
-                                Confirmer la suppression
+                                {isDeleting ? "Suppression..." : "Confirmer la suppression"}
                             </Button>
                         </div>
                     </div>
@@ -187,3 +223,5 @@ export function CategoryCard({ category }: Props) {
         </Card>
     );
 }
+
+export default CategoryCard;

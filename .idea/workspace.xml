@@ -6,8 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="99e20084-6b3c-4d4b-8efe-5abe6db7e940" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/dashboard/departments/DepartmentsComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/dashboard/departments/DepartmentsComponent.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(protected)/dashboard/departments/[department]/DepartmentRequestComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/dashboard/departments/[department]/DepartmentRequestComponent.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(protected)/dashboard/departments/[department]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/dashboard/departments/[department]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/needs/NeedsComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/needs/NeedsComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/needs/new/[id]/RequestComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/needs/new/[id]/RequestComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/needs/new/component/NewComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/needs/new/component/NewComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/needs/new/component/sortableListComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/needs/new/component/sortableListComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/settings/categories/Component/CategoriesComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/settings/categories/Component/CategoriesComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/settings/categories/Component/category-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/settings/categories/Component/category-card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/settings/users/usersDatatable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/settings/users/usersDatatable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/userAppSidebard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/userAppSidebard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/csv/export-csv.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/csv/export-csv.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/data.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +90,8 @@
       <workItem from="1739357726967" duration="9255000" />
       <workItem from="1739369296060" duration="7359000" />
       <workItem from="1739451715896" duration="14761000" />
-      <workItem from="1739467231838" duration="25994000" />
+      <workItem from="1739467231838" duration="30700000" />
+      <workItem from="1739533161010" duration="5734000" />
     </task>
     <servers />
   </component>
