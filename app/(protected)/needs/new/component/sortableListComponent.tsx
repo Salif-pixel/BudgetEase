@@ -348,230 +348,244 @@ export type ExportRowType = {
     date_approbation: string;
     approuvé_par: string;
 };
-export const exportToExcel = (data: RequestType[]) => {
-    const flattenedData: ExportRowType[] = data
-        .map((request) => {
-            const user = request.user;
-            const userName = user.name || 'Non spécifié';
-            const userEmail = user.email || 'Non spécifié';
+type AlertVariant = "success" | "error" | "warning" | "info"; // Définition possible
 
-            return request.needs.map((need) => ({
-                titre_requete: request.title,
-                description_requete: request.description || 'Non spécifié',
-                statut: request.status,
-                personnel: userName,
-                email_personnel: userEmail,
-                departement: request.department,
-                date_creation: request.createdAt.toLocaleString(),
-                date_validation: request.validatedAt
-                    ? request.validatedAt.toLocaleString()
-                    : 'Non validé',
-                categorie_besoin: need.category.name,
-                titre_besoin: need.title,
-                description_besoin: need.description || 'Non spécifié',
-                cout_estime: need.estimated_cost != null ? need.estimated_cost : 0,
-                quantite: need.quantity,
-                validé_par: request.validatedBy || 'Non spécifié',
-                date_approbation: request.approvedAt
-                    ? request.approvedAt.toLocaleString()
-                    : 'Non approuvé',
-                approuvé_par: request.approvedBy || 'Non spécifié',
-            }));
-        })
-        .flat();
+type ToastFunction = (
+    title: string,
+    description?: string,
+    variant?: AlertVariant,
+    badge?: string
+) => void;
 
-    const totalCoutEstime = flattenedData.reduce((acc, row) => {
-        const coutEstime = row.cout_estime != null ? row.cout_estime : 0;
-        return acc + coutEstime;
-    }, 0);
+export const exportToExcel = (data: RequestType[], showToast: ToastFunction) => {
+    if (data.length === 0) {
+        showToast("Erreur","Vous n'avez aucune requete","error");
+    }else {
 
-    const totalRow: ExportRowType = {
-        titre_requete: 'TOTAL',
-        description_requete: '',
-        statut: "",
-        personnel: '',
-        email_personnel: '',
-        departement: '',
-        date_creation: '',
-        date_validation: '',
-        categorie_besoin: '',
-        titre_besoin: '',
-        description_besoin: '',
-        cout_estime: totalCoutEstime,
-        quantite: "",
-        validé_par: '',
-        date_approbation: '',
-        approuvé_par: '',
-    };
+        const flattenedData: ExportRowType[] = data
+            .map((request) => {
+                const user = request.user;
+                const userName = user.name || 'Non spécifié';
+                const userEmail = user.email || 'Non spécifié';
 
-    flattenedData.push(totalRow);
+                return request.needs.map((need) => ({
+                    titre_requete: request.title,
+                    description_requete: request.description || 'Non spécifié',
+                    statut: request.status,
+                    personnel: userName,
+                    email_personnel: userEmail,
+                    departement: request.department,
+                    date_creation: request.createdAt.toLocaleString(),
+                    date_validation: request.validatedAt
+                        ? request.validatedAt.toLocaleString()
+                        : 'Non validé',
+                    categorie_besoin: need.category.name,
+                    titre_besoin: need.title,
+                    description_besoin: need.description || 'Non spécifié',
+                    cout_estime: need.estimated_cost != null ? need.estimated_cost : 0,
+                    quantite: need.quantity,
+                    validé_par: request.validatedBy || 'Non spécifié',
+                    date_approbation: request.approvedAt
+                        ? request.approvedAt.toLocaleString()
+                        : 'Non approuvé',
+                    approuvé_par: request.approvedBy || 'Non spécifié',
+                }));
+            })
+            .flat();
 
-    const workbook = new ExcelJS.Workbook();
-    const worksheet = workbook.addWorksheet('Demandes');
+        const totalCoutEstime = flattenedData.reduce((acc, row) => {
+            const coutEstime = row.cout_estime != null ? row.cout_estime : 0;
+            return acc + coutEstime;
+        }, 0);
 
-    // Définition des colonnes avec style amélioré
-    worksheet.columns = [
-        { header: 'Titre requête', key: 'titre_requete', width: 25 },
-        { header: 'Description requête', key: 'description_requete', width: 30 },
-        { header: 'Statut', key: 'statut', width: 15 },
-        { header: 'Personnel', key: 'personnel', width: 20 },
-        { header: 'Email personnel', key: 'email_personnel', width: 25 },
-        { header: 'Département', key: 'departement', width: 20 },
-        { header: 'Date création', key: 'date_creation', width: 20 },
-        { header: 'Date validation', key: 'date_validation', width: 20 },
-        { header: 'Catégorie besoin', key: 'categorie_besoin', width: 20 },
-        { header: 'Titre besoin', key: 'titre_besoin', width: 25 },
-        { header: 'Description besoin', key: 'description_besoin', width: 30 },
-        { header: 'Coût estimé', key: 'cout_estime', width: 15 },
-        { header: 'Quantité', key: 'quantite', width: 12 },
-        { header: 'Validé par', key: 'validé_par', width: 20 },
-        { header: 'Date approbation', key: 'date_approbation', width: 20 },
-        { header: 'Approuvé par', key: 'approuvé_par', width: 20 },
-    ];
-
-    // Style amélioré des en-têtes
-    const headerRow = worksheet.getRow(1);
-    headerRow.height = 30; // Hauteur augmentée pour les en-têtes
-    headerRow.eachCell((cell) => {
-        cell.fill = {
-            type: 'pattern',
-            pattern: 'solid',
-            fgColor: { argb: '2563EB' } // Bleu plus moderne
+        const totalRow: ExportRowType = {
+            titre_requete: 'TOTAL',
+            description_requete: '',
+            statut: "",
+            personnel: '',
+            email_personnel: '',
+            departement: '',
+            date_creation: '',
+            date_validation: '',
+            categorie_besoin: '',
+            titre_besoin: '',
+            description_besoin: '',
+            cout_estime: totalCoutEstime,
+            quantite: "",
+            validé_par: '',
+            date_approbation: '',
+            approuvé_par: '',
         };
-        cell.font = {
-            bold: true,
-            color: { argb: 'FFFFFF' },
-            size: 12
-        };
-        cell.alignment = {
-            vertical: 'middle',
-            horizontal: 'center',
-            wrapText: true
-        };
-        cell.border = {
-            top: { style: 'medium', color: { argb: '000000' } },
-            left: { style: 'thin', color: { argb: '000000' } },
-            bottom: { style: 'medium', color: { argb: '000000' } },
-            right: { style: 'thin', color: { argb: '000000' } }
-        };
-    });
 
-    // Ajout des données avec style amélioré
-    flattenedData.forEach((item, index) => {
-        const row = worksheet.addRow(item);
-        row.height = 25; // Hauteur de ligne augmentée
+        flattenedData.push(totalRow);
 
-        row.eachCell((cell, colNumber) => {
-            // Style de base pour toutes les cellules
-            cell.border = {
-                top: { style: 'thin', color: { argb: '000000' } },
-                left: { style: 'thin', color: { argb: '000000' } },
-                bottom: { style: 'thin', color: { argb: '000000' } },
-                right: { style: 'thin', color: { argb: '000000' } }
+        const workbook = new ExcelJS.Workbook();
+        const worksheet = workbook.addWorksheet('Demandes');
+
+        // Définition des colonnes avec style amélioré
+        worksheet.columns = [
+            {header: 'Titre requête', key: 'titre_requete', width: 25},
+            {header: 'Description requête', key: 'description_requete', width: 30},
+            {header: 'Statut', key: 'statut', width: 15},
+            {header: 'Personnel', key: 'personnel', width: 20},
+            {header: 'Email personnel', key: 'email_personnel', width: 25},
+            {header: 'Département', key: 'departement', width: 20},
+            {header: 'Date création', key: 'date_creation', width: 20},
+            {header: 'Date validation', key: 'date_validation', width: 20},
+            {header: 'Catégorie besoin', key: 'categorie_besoin', width: 20},
+            {header: 'Titre besoin', key: 'titre_besoin', width: 25},
+            {header: 'Description besoin', key: 'description_besoin', width: 30},
+            {header: 'Coût estimé', key: 'cout_estime', width: 15},
+            {header: 'Quantité', key: 'quantite', width: 12},
+            {header: 'Validé par', key: 'validé_par', width: 20},
+            {header: 'Date approbation', key: 'date_approbation', width: 20},
+            {header: 'Approuvé par', key: 'approuvé_par', width: 20},
+        ];
+
+        // Style amélioré des en-têtes
+        const headerRow = worksheet.getRow(1);
+        headerRow.height = 30; // Hauteur augmentée pour les en-têtes
+        headerRow.eachCell((cell) => {
+            cell.fill = {
+                type: 'pattern',
+                pattern: 'solid',
+                fgColor: {argb: '2563EB'} // Bleu plus moderne
+            };
+            cell.font = {
+                bold: true,
+                color: {argb: 'FFFFFF'},
+                size: 12
             };
             cell.alignment = {
                 vertical: 'middle',
                 horizontal: 'center',
                 wrapText: true
             };
+            cell.border = {
+                top: {style: 'medium', color: {argb: '000000'}},
+                left: {style: 'thin', color: {argb: '000000'}},
+                bottom: {style: 'medium', color: {argb: '000000'}},
+                right: {style: 'thin', color: {argb: '000000'}}
+            };
+        });
 
-            // Style alterné pour les lignes
-            if (index % 2 !== 0 && index !== flattenedData.length - 1) {
-                cell.fill = {
-                    type: 'pattern',
-                    pattern: 'solid',
-                    fgColor: { argb: 'F3F4F6' } // Gris très clair
-                };
-            }
+        // Ajout des données avec style amélioré
+        flattenedData.forEach((item, index) => {
+            const row = worksheet.addRow(item);
+            row.height = 25; // Hauteur de ligne augmentée
 
-            // Style spécial pour la colonne statut
-            if (colNumber === 3 && item.statut) {
-                const statusColors = {
-                    DRAFT: { bg: 'FFF3C4', font: '92400E' },     // Jaune
-                    SUBMITTED: { bg: 'DBEAFE', font: '1E40AF' },  // Bleu
-                    VALIDATED: { bg: 'D1FAE5', font: '065F46' },  // Vert
-                    APPROVED: { bg: 'BBF7D0', font: '166534' },   // Vert foncé
-                    REJECTED: { bg: 'FEE2E2', font: 'B91C1C' },   // Rouge
+            row.eachCell((cell, colNumber) => {
+                // Style de base pour toutes les cellules
+                cell.border = {
+                    top: {style: 'thin', color: {argb: '000000'}},
+                    left: {style: 'thin', color: {argb: '000000'}},
+                    bottom: {style: 'thin', color: {argb: '000000'}},
+                    right: {style: 'thin', color: {argb: '000000'}}
                 };
-                const color = statusColors[item.statut as keyof typeof statusColors];
-                if (color) {
+                cell.alignment = {
+                    vertical: 'middle',
+                    horizontal: 'center',
+                    wrapText: true
+                };
+
+                // Style alterné pour les lignes
+                if (index % 2 !== 0 && index !== flattenedData.length - 1) {
                     cell.fill = {
                         type: 'pattern',
                         pattern: 'solid',
-                        fgColor: { argb: color.bg }
-                    };
-                    cell.font = {
-                        color: { argb: color.font },
-                        bold: true
+                        fgColor: {argb: 'F3F4F6'} // Gris très clair
                     };
                 }
-            }
 
-            // Format monétaire pour la colonne coût
-            if (colNumber === 12) {
-                cell.numFmt = '#,##0 "FCFA"';
-            }
+                // Style spécial pour la colonne statut
+                if (colNumber === 3 && item.statut) {
+                    const statusColors = {
+                        DRAFT: {bg: 'FFF3C4', font: '92400E'},     // Jaune
+                        SUBMITTED: {bg: 'DBEAFE', font: '1E40AF'},  // Bleu
+                        VALIDATED: {bg: 'D1FAE5', font: '065F46'},  // Vert
+                        APPROVED: {bg: 'BBF7D0', font: '166534'},   // Vert foncé
+                        REJECTED: {bg: 'FEE2E2', font: 'B91C1C'},   // Rouge
+                    };
+                    const color = statusColors[item.statut as keyof typeof statusColors];
+                    if (color) {
+                        cell.fill = {
+                            type: 'pattern',
+                            pattern: 'solid',
+                            fgColor: {argb: color.bg}
+                        };
+                        cell.font = {
+                            color: {argb: color.font},
+                            bold: true
+                        };
+                    }
+                }
 
-            // Format date pour les colonnes de date
-            if ([7, 8, 15].includes(colNumber) && cell.value !== '') {
-                cell.numFmt = 'dd/mm/yyyy hh:mm';
+                // Format monétaire pour la colonne coût
+                if (colNumber === 12) {
+                    cell.numFmt = '#,##0 "FCFA"';
+                }
+
+                // Format date pour les colonnes de date
+                if ([7, 8, 15].includes(colNumber) && cell.value !== '') {
+                    cell.numFmt = 'dd/mm/yyyy hh:mm';
+                }
+            });
+
+            // Style spécial pour la ligne TOTAL
+            if (index === flattenedData.length - 1) {
+                row.height = 30;
+                row.eachCell((cell) => {
+                    cell.fill = {
+                        type: 'pattern',
+                        pattern: 'solid',
+                        fgColor: {argb: 'DC2626'} // Rouge plus moderne
+                    };
+                    cell.font = {
+                        bold: true,
+                        color: {argb: 'FFFFFF'},
+                        size: 12
+                    };
+                    cell.border = {
+                        top: {style: 'medium', color: {argb: '000000'}},
+                        left: {style: 'thin', color: {argb: '000000'}},
+                        bottom: {style: 'medium', color: {argb: '000000'}},
+                        right: {style: 'thin', color: {argb: '000000'}}
+                    };
+                });
             }
         });
 
-        // Style spécial pour la ligne TOTAL
-        if (index === flattenedData.length - 1) {
-            row.height = 30;
-            row.eachCell((cell) => {
-                cell.fill = {
-                    type: 'pattern',
-                    pattern: 'solid',
-                    fgColor: { argb: 'DC2626' } // Rouge plus moderne
-                };
-                cell.font = {
-                    bold: true,
-                    color: { argb: 'FFFFFF' },
-                    size: 12
-                };
-                cell.border = {
-                    top: { style: 'medium', color: { argb: '000000' } },
-                    left: { style: 'thin', color: { argb: '000000' } },
-                    bottom: { style: 'medium', color: { argb: '000000' } },
-                    right: { style: 'thin', color: { argb: '000000' } }
-                };
-            });
-        }
-    });
+        // Ajout d'AutoFilter
+        worksheet.autoFilter = {
+            from: {row: 1, column: 1},
+            to: {row: 1, column: worksheet.columns.length}
+        };
 
-    // Ajout d'AutoFilter
-    worksheet.autoFilter = {
-        from: { row: 1, column: 1 },
-        to: { row: 1, column: worksheet.columns.length }
-    };
+        // Figer la première ligne
+        worksheet.views = [
+            {state: 'frozen', xSplit: 0, ySplit: 1, activeCell: 'A2'}
+        ];
 
-    // Figer la première ligne
-    worksheet.views = [
-        { state: 'frozen', xSplit: 0, ySplit: 1, activeCell: 'A2' }
-    ];
+        // Protection de la feuille avec certaines exceptions
+        worksheet.protect('', {
+            selectLockedCells: true,
+            selectUnlockedCells: true,
+            formatCells: true,
+            formatColumns: true,
+            formatRows: true,
+            sort: true,
+            autoFilter: true
+        });
 
-    // Protection de la feuille avec certaines exceptions
-    worksheet.protect('', {
-        selectLockedCells: true,
-        selectUnlockedCells: true,
-        formatCells: true,
-        formatColumns: true,
-        formatRows: true,
-        sort: true,
-        autoFilter: true
-    });
-
-    // Génération et téléchargement
-    workbook.xlsx.writeBuffer().then((buffer) => {
-        const blob = new Blob(
-            [buffer],
-            { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }
-        );
-        saveAs(blob, `demandes_export_${new Date().toLocaleDateString('fr-FR')}.xlsx`);
-    });
+        // Génération et téléchargement
+        workbook.xlsx.writeBuffer().then((buffer) => {
+            const blob = new Blob(
+                [buffer],
+                {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}
+            );
+            saveAs(blob, `demandes_export_${new Date().toLocaleDateString('fr-FR')}.xlsx`);
+        });
+    }
 };
 export const RequestsList: React.FC<RequestsListProps> = ({
                                                               requests,
@@ -579,10 +593,11 @@ export const RequestsList: React.FC<RequestsListProps> = ({
                                                                 user,
                                                               onDelete,
                                                           }) => {
+    const { showToast } = useCustomToast();
     return (
         <div className={" w-full h-full p-4  space-y-8"}>
             <div className="flex gap-3 w-full sm:w-auto">
-                <Button onClick={()=>{exportToExcel(requests)}} variant="outline" className="flex-1 sm:flex-none gap-2">
+                <Button onClick={()=>{exportToExcel(requests, showToast)}} variant="outline" className="flex-1 sm:flex-none gap-2">
                     <Download className="w-4 h-4" />
                     Exporter
                 </Button>

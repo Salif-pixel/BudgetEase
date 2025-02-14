@@ -30,7 +30,7 @@ export default async function NewComponent() {
 
     const requests = await prisma.request.findMany({
         orderBy: { createdAt: 'asc' },
-        where: { department: user.department as Department },
+        where: { department: user.department as Department ,userId:user.id},
         include: {
             needs: { include: { category: true } },
             user: { select: { image: true, name: true, email: true }}

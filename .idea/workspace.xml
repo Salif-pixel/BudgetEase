@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99e20084-6b3c-4d4b-8efe-5abe6db7e940" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/needs/new/component/NewComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/needs/new/component/NewComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/needs/new/component/sortableListComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/needs/new/component/sortableListComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nav-user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav-user.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,11 +47,11 @@
       <recent name="$PROJECT_DIR$/public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/favicon.ico" />
       <recent name="$PROJECT_DIR$/app/(protected)/needs/new/component" />
       <recent name="$PROJECT_DIR$/app/(protected)/settings/categories/Component" />
       <recent name="$PROJECT_DIR$/src/assets" />
-      <recent name="$PROJECT_DIR$/src/components/reactbits" />
-      <recent name="$PROJECT_DIR$/src/components" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -78,7 +81,7 @@
       <workItem from="1739369296060" duration="7359000" />
       <workItem from="1739451715896" duration="14761000" />
       <workItem from="1739467231838" duration="30700000" />
-      <workItem from="1739533161010" duration="6083000" />
+      <workItem from="1739533161010" duration="8325000" />
     </task>
     <servers />
   </component>

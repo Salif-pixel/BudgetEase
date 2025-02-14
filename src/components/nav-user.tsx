@@ -31,6 +31,7 @@ import {authClient} from "@/src/lib/authClient";
 import {Button} from "@/src/components/ui/button";
 import {redirect} from "next/navigation";
 import {User} from "@prisma/client";
+import Link from "next/link";
 export function NavUser({user}: {user: User}) {
   const { isMobile } = useSidebar()
 
@@ -76,7 +77,7 @@ export function NavUser({user}: {user: User}) {
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <BadgeCheck />
-                Compte
+                <Link href={"/settings/account"}>Compte</Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <Bell />
