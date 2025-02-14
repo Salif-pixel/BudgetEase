@@ -14,8 +14,14 @@ import DepartmentRequestComponent
     from "@/app/(protected)/dashboard/departments/[department]/DepartmentRequestComponent";
 
 
-export  default async function  Page({ params }: { params: { department: string } }) {
-    const department = (await params).department;
+type paramsType = Promise<{ department: string }>;
+export  default async function  Page({
+    params,
+}: {
+    params: paramsType;
+}) {
+    const { department } = await params;
+
     return (
         <SidebarInset >
             <header className="flex h-16 shrink-0 items-center gap-2 ">

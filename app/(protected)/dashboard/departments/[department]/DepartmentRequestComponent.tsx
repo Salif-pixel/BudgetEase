@@ -7,6 +7,7 @@ import {prisma} from "@/src/lib/prisma";
 import {CreateRequestForm, RequestsList} from "@/app/(protected)/needs/new/component/sortableListComponent";
 import {Button} from "@/src/components/ui/button";
 import {exportToCSV} from "@/src/components/csv/export-csv";
+import {Department} from "@prisma/client";
 interface RequestComponentProps {
     department: string;
 }
@@ -31,9 +32,10 @@ export default async function DepartmentRequestComponent({ department }: Request
     if (!hasAccess) {
         return redirect("/not-found");
     }
+
     const requests = await prisma.request.findMany({
         orderBy: { createdAt: 'asc' },
-        where: { department: department ,status: { in: ["VALIDATED", "APPROVED"] } },
+        where: { department: department as Department   ,status: { in: ["VALIDATED", "APPROVED"] } },
         include: { needs: { include: { category: true } } , user:{select:{image:true , name:true ,email:true}}}
     })
 

@@ -12,9 +12,14 @@ import {Suspense} from "react";
 import RequestComponent from "@/app/(protected)/needs/new/[id]/RequestComponent";
 import LoaderComponent from "@/src/components/LoaderComponent";
 
+type paramsType = Promise<{ id: string }>;
+export  default async function  Page({
+                                         params,
+                                     }: {
+    params: paramsType;
+}) {
+    const { id } = await params;
 
-export  default async function Page({ params }: { params: { id: string } }) {
-    const id = (await params).id;
     return (
         <SidebarInset >
             <header className="flex h-16 shrink-0 items-center gap-2 ">
