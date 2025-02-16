@@ -235,7 +235,10 @@ const RequestCard: React.FC<RequestCardProps> = ({ request, onClick, user }) => 
                         (user.role === "DEPARTMENT_HEAD" && request.status !== "APPROVED") ||
 
                         // 3️⃣ Si la requête est "APPROVED", seuls "ADMIN" et "DIRECTOR" peuvent voir le bouton
-                        (request.status === "APPROVED" && (user.role === "DIRECTOR" || user.role === "ADMIN"))
+                        (request.status === "APPROVED" && (user.role === "DIRECTOR" || user.role === "ADMIN")) ||
+
+                        // 4️⃣ L'ADMIN peut toujours voir le bouton, quel que soit le statut
+                        (user.role === "ADMIN")
                     ) && (
                         <Link
                             href={`/needs/new/${request.id}`}
