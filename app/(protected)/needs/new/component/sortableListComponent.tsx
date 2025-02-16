@@ -624,7 +624,7 @@ export const RequestsList: React.FC<RequestsListProps> = ({
                     Exporter
                 </Button>
             </div>
-        <div className="grid grid-cols-1 md:grid-cols-2  gap-x-32  p-4">
+        <div className="grid grid-cols-1 md:grid-cols-2  gap-32  p-4">
 
                 {requests.map((request) => (
 
