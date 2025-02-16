@@ -228,7 +228,13 @@ const RequestCard: React.FC<RequestCardProps> = ({ request, onClick, user }) => 
 
                 <div className="flex items-center gap-3">
                     {(
-                        user.role !== "PERSONAL" && request.status === "DRAFT" ||
+                        // 1️⃣ Si l'utilisateur est "PERSONAL" et que la requête est en "DRAFT", il peut voir le bouton
+                        (user.role === "PERSONAL" && request.status === "DRAFT") ||
+
+                        // 2️⃣ Si l'utilisateur est "HEAD_OF_DEPARTMENT" et que la requête N'EST PAS "APPROVED", il peut voir le bouton
+                        (user.role === "DEPARTMENT_HEAD" && request.status !== "APPROVED") ||
+
+                        // 3️⃣ Si la requête est "APPROVED", seuls "ADMIN" et "DIRECTOR" peuvent voir le bouton
                         (request.status === "APPROVED" && (user.role === "DIRECTOR" || user.role === "ADMIN"))
                     ) && (
                         <Link
@@ -243,6 +249,7 @@ const RequestCard: React.FC<RequestCardProps> = ({ request, onClick, user }) => 
                             Ajouter
                         </Link>
                     )}
+
 
                     {user.role !== "PERSONAL" && (
                         <Avatar className="h-8 w-8 ring-2 ring-background">
@@ -311,25 +318,30 @@ const RequestCard: React.FC<RequestCardProps> = ({ request, onClick, user }) => 
                         )}
                     </SelectContent>
                 </Select>
+                {(
+                    // 1️⃣ Si l'utilisateur est "PERSONAL" et que la requête est en "DRAFT", il peut voir le bouton
+                    (user.role === "PERSONAL" && request.status === "DRAFT") ||
 
-                {(user.role !== "PERSONAL" || request.status === "DRAFT") && (
-                    <>
-                        {(user.role !== "DIRECTOR" && request.status !== "APPROVED") && (
-                            <Button
-                                variant="destructive"
-                                size="sm"
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleDelete(request.id);
-                                }}
-                                className="hover:bg-red-600/90 transition-colors"
-                            >
-                                <Trash className="w-4 h-4 mr-1" />
-                                Supprimer
-                            </Button>
-                        )}
-                    </>
+                    // 2️⃣ Si l'utilisateur est "HEAD_OF_DEPARTMENT" et que la requête N'EST PAS "APPROVED", il peut voir le bouton
+                    (user.role === "DEPARTMENT_HEAD" && request.status !== "APPROVED") ||
+
+                    // 3️⃣ L'ADMIN peut toujours voir le bouton, quel que soit le statut
+                    (user.role === "ADMIN")
+                ) && (
+                    <Button
+                        variant="destructive"
+                        size="sm"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            handleDelete(request.id);
+                        }}
+                        className="hover:bg-red-600/90 transition-colors"
+                    >
+                        <Trash className="w-4 h-4 mr-1" />
+                        Supprimer
+                    </Button>
                 )}
+
             </CardFooter>
         </Card>
     );
