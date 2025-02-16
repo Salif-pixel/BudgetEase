@@ -1,85 +1,94 @@
-"use client";
+"use client"
 
-import {EyeIcon, Lock, Sparkles, UsersIcon} from "lucide-react";
-import { GlowingEffect } from "@/src/components/ui/glowing-effect";
+import type React from "react"
+import { motion } from "framer-motion"
+import { EyeIcon, Lock, Sparkles, UsersIcon } from "lucide-react"
+import { cn } from "@/src/lib/utils"
 
 export function Bento() {
     return (
-        <div className={" w-full p-4 gap-4"}>
-            <ul className=" grid grid-cols-1  grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-3 lg:gap-4 xl:max-h-[34rem] xl:grid-rows-2">
-                <GridItem
-                    area="md:[grid-area:1/1/2/7] xl:[grid-area:1/1/2/5]"
-                    icon={<EyeIcon className="h-4 w-4 text-primary dark:text-neutral-40 " />}
-                    title="Visualisation claire"
-                    description="Graphiques interactifs pour une compréhension rapide des dépenses de l'école."
-                />
-
-                <GridItem
-                    area="md:[grid-area:1/7/2/13] xl:[grid-area:2/1/3/5]"
-                    icon={<Sparkles className="h-4 w-4 text-primary dark:text-neutral-400" />}
-                    title="Prévisions budgétaires."
-                    description="Outils avancés pour planifier et prévoir les budgets futurs avec précision."
-                />
-
-                <GridItem
-                    area="md:[grid-area:2/1/3/7] xl:[grid-area:1/5/3/8]"
-                    icon={<UsersIcon className="h-4 w-4 text-primary dark:text-neutral-400" />}
-                    title="Collaboration"
-                    description="Fonctionnalités de partage pour une meilleure coordination entre les départements."
-                />
-
-                <GridItem
-                    area="md:[grid-area:2/7/3/13] xl:[grid-area:1/8/2/13]"
-                    icon={<Lock  className="h-4 w-4 text-primary dark:text-neutral-400" />}
-                    title="Sécurité des données"
-                    description="Protection avancée des informations financières sensibles de l'école."
-                />
-
-            </ul>
-
-        </div>
-          );
+        <section className="w-full py-12 md:py-24 lg:py-32 ">
+            <div className="w-full px-4 md:px-6 ">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-16 max-w-3xl mx-auto"
+                >
+                <h2 className="text-4xl  md:text-5xl font-bold tracking-tight text-gray-900 mb-6">
+                    Fonctionnalités clés
+                    <br />
+                    de BudgetEase
+                </h2>
+                <p className="text-lg text-gray-600">
+                    Découvrez les fonctionnalités qui rendent BudgetEase indispensable pour la gestion financière de votre établissement.
+                </p>
+                </motion.div>
+                <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+                    <GridItem
+                        icon={<EyeIcon className="h-8 w-8" />}
+                        title="Visualisation claire"
+                        description="Graphiques interactifs pour une compréhension rapide des dépenses de l'école."
+                        color="bg-blue-500"
+                    />
+                    <GridItem
+                        icon={<Sparkles className="h-8 w-8" />}
+                        title="Prévisions budgétaires"
+                        description="Outils avancés pour planifier et prévoir les budgets futurs avec précision."
+                        color="bg-purple-500"
+                    />
+                    <GridItem
+                        icon={<UsersIcon className="h-8 w-8" />}
+                        title="Collaboration"
+                        description="Fonctionnalités de partage pour une meilleure coordination entre les départements."
+                        color="bg-green-500"
+                    />
+                    <GridItem
+                        icon={<Lock className="h-8 w-8" />}
+                        title="Sécurité des données"
+                        description="Protection avancée des informations financières sensibles de l'école."
+                        color="bg-red-500"
+                    />
+                </ul>
+            </div>
+        </section>
+    )
 }
 
 interface GridItemProps {
-    area: string;
-    icon: React.ReactNode;
-    title: string;
-    description: React.ReactNode;
+    icon: React.ReactNode
+    title: string
+    description: string
+    color: string
 }
 
-const GridItem = ({ area, icon, title, description }: GridItemProps) => {
+const GridItem = ({ icon, title, description, color }: GridItemProps) => {
     return (
-        <li className={`min-h-[14rem] list-none ${area}`}>
-            <div className="relative h-full rounded-2.5xl border  p-2  md:rounded-3xl md:p-3">
-                <GlowingEffect
-                    blur={0}
-                    borderWidth={3}
-                    spread={80}
-                    glow={true}
-                    disabled={false}
-                    proximity={64}
-                    inactiveZone={0.01}
-                />
-                <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-0.75 p-6  dark:shadow-[0px_0px_27px_0px_#2D2D2D] md:p-6">
-                    <div className="relative flex flex-1 flex-col justify-between gap-3">
-                        <div className="w-fit rounded-lg border border-gray-600 p-2 ">
+        <motion.li
+            className="list-none"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+        >
+            <div className="relative h-full overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-lg transition-all duration-300 hover:shadow-xl">
+                <div className={cn("absolute inset-0 opacity-10", color)} />
+                <div className="relative flex h-full flex-col justify-between gap-6 p-6">
+                    <div className="space-y-4">
+                        <div className={cn("w-12 h-12 rounded-full flex items-center justify-center text-white", color)}>
                             {icon}
                         </div>
-                        <div className="space-y-3">
-                            <h3 className="pt-0.5 text-xl/[1.375rem] font-semibold font-sans -tracking-4 md:text-2xl/[1.875rem] text-balance text-primary dark:text-white">
-                                {title}
-                            </h3>
-                            <h2
-                                className="[&_b]:md:font-semibold [&_strong]:md:font-semibold font-sans text-sm/[1.125rem]
-              md:text-base/[1.375rem]  text-black dark:text-neutral-400"
-                            >
-                                {description}
-                            </h2>
-                        </div>
+                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{title}</h3>
+                        <p className="text-gray-600 dark:text-gray-300">{description}</p>
                     </div>
+                    <motion.div
+                        className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent"
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                    />
                 </div>
             </div>
-        </li>
-    );
-};
+        </motion.li>
+    )
+}
+

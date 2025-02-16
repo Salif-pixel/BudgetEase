@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99e20084-6b3c-4d4b-8efe-5abe6db7e940" name="Changes" comment="" />
+    <list default="true" id="99e20084-6b3c-4d4b-8efe-5abe6db7e940" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/department.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/request.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Landing/Bento.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing/Bento.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Landing/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Landing/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing/dashboard.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,7 +86,7 @@
       <workItem from="1739451715896" duration="14761000" />
       <workItem from="1739467231838" duration="30700000" />
       <workItem from="1739533161010" duration="11047000" />
-      <workItem from="1739734268477" duration="705000" />
+      <workItem from="1739734268477" duration="3757000" />
     </task>
     <servers />
   </component>

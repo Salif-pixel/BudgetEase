@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "💰 BudgetEase",
+  title: "BudgetEase",
   description: "BudgetEase est une app permmettant de vous aider a gerer vos budgetisation universitaire",
 };
 

@@ -1,72 +1,146 @@
-import TextPressure from "@/src/components/reactbits/TextPressure";
-import {Button, buttonVariants} from "@/src/components/ui/button";
+"use client"
 import FinanceSVG from "../../assets/paypal-33.svg";
-import Image from "next/image";
-import {GradientHeading} from "@/src/components/cult/gradientheading";
-import React from "react";
-import Link from "next/link";
-import {cn} from "@/src/lib/utils";
+import type React from "react"
+
+import Link from "next/link"
+import Image from "next/image"
+import { Button, buttonVariants } from "@/src/components/ui/button"
+import { GradientHeading } from "@/src/components/cult/gradientheading"
+import { cn } from "@/src/lib/utils"
+import { ArrowRight, BarChart2, PieChart, TrendingUp } from "lucide-react"
+import { motion } from "motion/react";
+
 export default function Header() {
     return (
-        <div className={"h-fit bg-primary border-[20px] border-background  rounded-[40px]"}>
-            <div className={"w-full flex flex-col sm:flex-row gap-4 p-4 justify-between"}>
-                <Button className={"bg-background text-foreground hover:bg-background rounded-full hover:text-foreground "}>
-                    <div className={"flex flex-row w-full"}>
-                        <div className="grid flex-1  text-center text-sm leading-tight">
-                            <span className="truncate font-semibold">💰BudgetEase</span>
-                        </div>
+        <div className="bg-primary rounded-3xl border-8 border-background overflow-hidden shadow-2xl">
+            <div className="container mx-auto px-4 py-6">
+                <nav className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-12">
+                    <Button className="bg-background text-foreground hover:bg-background/90 rounded-full">
+                        <span className="text-lg font-bold">💰BudgetEase</span>
+                    </Button>
+                    <div className="hidden lg:flex gap-4">
+                        <Link
+                            href="/login"
+                            className={cn(
+                                buttonVariants({ size: "lg", variant: "outline" }),
+                                "rounded-full bg-background text-foreground hover:bg-background/80",
+                            )}
+                        >
+                            Se connecter
+                        </Link>
+                        <Link
+                            href="/register"
+                            className={cn(
+                                buttonVariants({ size: "lg", variant: "outline" }),
+                                "rounded-full bg-foreground text-background hover:bg-foreground/90",
+                            )}
+                        >
+                            S&apos;inscrire
+                        </Link>
                     </div>
-                </Button>
-                <div className={"flex flex-col sm:flex-row sm:justify-end gap-4 "}>
-                    <Link prefetch={true}
-                        href="/login"
-                        className={cn(
-                            buttonVariants({ size: "lg", variant: "outline" }),
-                            "rounded-full bg-background  text-foreground hover:text-foreground/70 hover:bg-background/70"
-                        )}
+                </nav>
+
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                    <div className="space-y-6">
+                        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+                            <GradientHeading
+                                className="text-center lg:text-left text-white"
+                                variant="light"
+                                size="xxxl"
+                                weight="bold"
+                            >
+                                Simplifiez votre gestion budgétaire
+                            </GradientHeading>
+                        </motion.div>
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            className="text-background text-lg font-medium"
+                        >
+                            BudgetEase transforme la gestion financière de votre établissement en une expérience intuitive et
+                            efficace. Prenez le contrôle de vos finances avec des outils puissants et faciles à utiliser.
+                        </motion.p>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.4 }}
+                            className="flex flex-col sm:flex-row gap-4"
+                        >
+                            <Link
+                                href="/login"
+                                className={cn(
+                                    buttonVariants({ size: "lg" }),
+                                    "rounded-full bg-background text-primary hover:bg-background/90",
+                                )}
+                            >
+                                Voir la démo
+                                <ArrowRight className="ml-2 h-5 w-5" />
+                            </Link>
+                            <Link
+                                href="/register"
+                                className={cn(
+                                    buttonVariants({ size: "lg", variant: "outline" }),
+                                    "rounded-full bg-transparent text-background border-background hover:bg-background/10",
+                                )}
+                            >
+                                S'inscrire
+                            </Link>
+                        </motion.div>
+                    </div>
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8 }}
+                        className="relative aspect-square max-w-lg mx-auto"
                     >
-                        Se connecter
-                    </Link>
-                    <Link prefetch={true}
-                        href="/register"
-                        className={cn(
-                            buttonVariants({ size: "lg", variant: "outline" }),
-                            "rounded-full bg-foreground   text-background hover:text-background/70 hover:bg-foreground/70"
-                        )}
-                    >
-                        S&apos;inscire
-                    </Link>
-
-
+                        <Image
+                            src={FinanceSVG}
+                            width={800}
+                            height={800}
+                            alt="BudgetEase Dashboard"
+                            className="rounded-2xl shadow-lg"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl" />
+                    </motion.div>
                 </div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                    className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-16"
+                >
+                    {[
+                        {
+                            icon: PieChart,
+                            title: "Gerer vos finances",
+                            description: "Suivez vos dépenses",
+                        },
+                        {
+                            icon: TrendingUp,
+                            title: "Analyse des tendances",
+                            description: "Identifiez les opportunités d'optimisation budgétaire",
+                        },
+                        {
+                            icon: BarChart2,
+                            title: "Rapports détaillés",
+                            description: "Générez des rapports personnalisés en quelques clics",
+                        },
+                    ].map((feature, index) => (
+                        <div key={index} className="flex items-center gap-4">
+                            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-background flex items-center justify-center">
+                                <feature.icon className="h-6 w-6 text-primary" />
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-semibold text-background">{feature.title}</h3>
+                                <p className="text-sm text-background/80">{feature.description}</p>
+                            </div>
+                        </div>
+                    ))}
+                </motion.div>
             </div>
-
-            <div className={"w-full h-full relative flex flex-row "}>
-                <div className={" w-full h-full "}>
-                    <TextPressure
-                        className={"hidden sm:flex"}
-                        text="Bienvenue"
-                        flex={true}
-                        alpha={false}
-                        stroke={false}
-                        width={true}
-                        weight={true}
-                        italic={true}
-                        textColor="#ffffff"
-                        strokeColor="#ff0000"
-                        minFontSize={10}
-                    />
-                    <GradientHeading className={" block md:hidden text-center text-white"} variant="light" size="xxxl" weight="bold">
-                        Bienvenue
-                    </GradientHeading>
-                    <p className={" p-10 text-xs lg:text-lg text-background font-bold"}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et luctus enim justo non justo. Ut felis.
-                    </p>
-
-                </div>
-                <Image className={"hidden lg:block"} src={FinanceSVG} width={"500"} height={"500"} alt={"finance"} />
-            </div>
-
         </div>
     )
 }
+
