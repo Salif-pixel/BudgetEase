@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99e20084-6b3c-4d4b-8efe-5abe6db7e940" name="Changes" comment="">
+    <list default="true" id="99e20084-6b3c-4d4b-8efe-5abe6db7e940" name="Changes" comment="fix: handle access update errors and improve user feedback">
+      <change afterPath="$PROJECT_DIR$/src/actions/signOut.action.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(protected)/needs/new/component/sortableListComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/needs/new/component/sortableListComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Landing/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing/dashboard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/nav-user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav-user.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,11 +82,26 @@
       <workItem from="1739467231838" duration="30700000" />
       <workItem from="1739533161010" duration="11047000" />
       <workItem from="1739734268477" duration="4780000" />
-      <workItem from="1739860986794" duration="672000" />
+      <workItem from="1739860986794" duration="1132000" />
+      <workItem from="1739862861011" duration="645000" />
     </task>
+    <task id="LOCAL-00001" summary="feat: add NeedsComponent with session and access checks">
+      <option name="closed" value="true" />
+      <created>1739862052911</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1739862052911</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: add NeedsComponent with session and access checks" />
+    <MESSAGE value="fix: handle access update errors and improve user feedback" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: handle access update errors and improve user feedback" />
   </component>
 </project>
