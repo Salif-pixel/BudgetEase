@@ -32,6 +32,7 @@ import {Button} from "@/src/components/ui/button";
 import {redirect} from "next/navigation";
 import {User} from "@prisma/client";
 import Link from "next/link";
+import {auth} from "@/src/lib/auth";
 export function NavUser({user}: {user: User}) {
   const { isMobile } = useSidebar()
 
@@ -87,7 +88,7 @@ export function NavUser({user}: {user: User}) {
             <DropdownMenuSeparator />
             <DropdownMenuItem>
              <form className={"w-full"} action={async ()=> {
-               authClient.signOut();
+               await authClient.signOut();
                 redirect("/")
              }}>
                <Button className={"w-full"}>

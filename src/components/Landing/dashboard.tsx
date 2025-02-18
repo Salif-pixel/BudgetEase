@@ -136,7 +136,7 @@ export default function Dashboard() {
                             className="flex justify-start"
                         >
                             <Link
-                                href="/dashboard"
+                                href="/dashboard/departments"
                                 className="group inline-flex items-center gap-2 bg-primary text-background px-8 py-4 rounded-xl text-lg font-semibold transition-colors duration-300"
                             >
                                 Découvrir le dashboard

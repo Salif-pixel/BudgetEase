@@ -176,11 +176,13 @@ export default function PageAccessManagement({
                             <SelectValue placeholder="Sélectionnez un rôle" />
                         </SelectTrigger>
                         <SelectContent>
-                            {Object.entries(roleTranslations).map(([roleKey, roleLabel]) => (
-                                <SelectItem key={roleKey} value={roleKey}>
-                                    {roleLabel}
-                                </SelectItem>
-                            ))}
+                            {Object.entries(roleTranslations)
+                                .filter(([roleKey]) => roleKey !== "ADMIN") // Filtrer "ADMIN"
+                                .map(([roleKey, roleLabel]) => (
+                                    <SelectItem key={roleKey} value={roleKey}>
+                                        {roleLabel}
+                                    </SelectItem>
+                                ))}
                         </SelectContent>
                     </Select>
                 </div>

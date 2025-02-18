@@ -28,12 +28,18 @@ export default async function NeedsComponent() {
     if (!hasAccess) {
         return redirect("/not-found");
     }
-
     const requests = await prisma.request.findMany({
         orderBy: { createdAt: 'asc' },
-        where: { department: user.department as Department },
-        include: { needs: { include: { category: true } }, user: {select: {image: true, name: true, email: true}}}
-    })
+        where: {
+            department: user.department as Department,
+            needs: { some: {} }
+        },
+        include: {
+            needs: { include: { category: true } },
+            user: { select: { image: true, name: true, email: true } }
+        }
+    });
+
 
     if(user.role === null) {
         return redirect("/not-found");
